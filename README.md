@@ -1,1 +1,0 @@
-# Solo Ruby Project Gym
