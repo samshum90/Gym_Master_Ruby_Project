@@ -1,1 +1,1 @@
-# Solo_Ruby_Project_Gym
+# Solo Ruby Project Gym
