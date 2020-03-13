@@ -1,12 +1,13 @@
 DROP TABLE IF EXISTS membership;
 DROP TABLE IF EXISTS members;
-DROP TABLE IF EXISTS classes;
+DROP TABLE IF EXISTS groupexercises;
 
-CREATE TABLE classes(
+CREATE TABLE groupexercises(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  start_time TIME(0),
-  price DECIMAL
+  start_time TIME (0) NOT NULL,
+  price DECIMAL(5,2),
+  capacity INT
 );
 
 CREATE TABLE members(
@@ -18,6 +19,6 @@ CREATE TABLE members(
 CREATE TABLE memberships(
   id SERIAL PRIMARY KEY,
   member_id INT references members(id),
-  class_id INT references classes(id),
+  groupexercise_id INT references groupexercises(id),
   type VARCHAR(255)
 );
