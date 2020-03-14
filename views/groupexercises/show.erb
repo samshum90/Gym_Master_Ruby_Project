@@ -1,0 +1,14 @@
+<h1>class: <%= @group.name %></h1>
+
+<p>Start Time: <%= @group.start_time %></p>
+
+<p>Price: <%= @group.price %></p>
+
+<p>Capacity: <%= @group.capacity %></p>
+
+<h3>Registered Members:</h3>
+<ul>
+  <% @group.members.each do |member| %>
+  <li><%= member.format_name %></li>
+  <% end %>
+</ul>
