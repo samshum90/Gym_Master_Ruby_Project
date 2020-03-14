@@ -1,0 +1,24 @@
+<h1>Classes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th>Start Time</th>
+    <th></th>
+    <th>Price</th>
+    <th></th>
+    <th>Capacity</th>
+  </tr>
+  <% for group in @group %>
+  <tr>
+    <td><a href="/groupexercises/<%= group.id %>"><%= group.name %></a></td>
+    <td>|</td>
+    <td><%= group.start_time %></td>
+    <td>|</td>
+    <td><%= group.price %></td>
+    <td>|</td>
+    <td><%= group.capacity %></td>
+  </tr>
+  <% end %>
+</table>

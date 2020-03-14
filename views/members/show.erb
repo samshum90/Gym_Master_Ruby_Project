@@ -1,0 +1,12 @@
+<h1>Member name: <%= @members.format_name %></h1>
+
+<p>Date of Birth: <%= @members.date_of_birth %></p>
+
+<p>Membership Type:<%= @members.membership_type %></p>
+
+<h3>Classes:</h3>
+<ul>
+  <% @members.groupexercise.each do |classes| %>
+  <li><%= classes.name %></li>
+  <% end %>
+</ul>

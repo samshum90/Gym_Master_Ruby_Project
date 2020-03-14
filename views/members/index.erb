@@ -1,0 +1,20 @@
+<h1>Members</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th>Date Of Birth</th>
+    <th></th>
+    <th>Membership Type</th>
+  </tr>
+  <% for member in @members %>
+  <tr>
+    <td><a href="/members/<%= member.id %>"><%= member.format_name %></a></td>
+    <td>|</td>
+    <td><%= member.date_of_birth %></td>
+    <td>|</td>
+    <td><%= member.membership_type %></td>
+  </tr>
+  <% end %>
+</table>
