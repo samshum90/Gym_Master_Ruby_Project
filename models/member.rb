@@ -24,9 +24,9 @@ class Member
           last_name,
           date_of_birth,
           membership_type,
-          membership_status )
+          membership_status)
           VALUES(
-          $1, $2, $3, $4, $5)
+          $1, $2, $3, $4, $5 )
           RETURNING id'
     values = [@first_name, @last_name, @date_of_birth, @membership_type, @membership_status]
     results = SqlRunner.run(sql, values)
@@ -40,8 +40,8 @@ class Member
     last_name,
     date_of_birth,
     membership_type,
-    membership_status ) =
-    ( $1, $2, $3, $4, 5)
+    membership_status) =
+    ( $1, $2, $3, $4, $5 )
     WHERE id = $6'
     values = [@first_name, @last_name, @date_of_birth, @membership_type, @membership_status, @id]
     SqlRunner.run(sql, values)

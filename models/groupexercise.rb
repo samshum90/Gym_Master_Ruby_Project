@@ -2,12 +2,13 @@ require_relative('../db/sql_runner')
 
 class GroupExercise
 
-  attr_accessor :name, :start_time, :price, :capacity
+  attr_accessor :name, :set_date, :start_time, :price, :capacity
   attr_reader :id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
+    @set_date = options['set_date']
     @start_time = options['start_time']
     @price = options['price']
     @capacity = options['capacity'].to_i
@@ -24,13 +25,14 @@ class GroupExercise
   def save()
     sql = 'INSERT INTO groupexercises (
           name,
+          set_date,
           start_time,
           price,
           capacity)
           VALUES(
-          $1, $2, $3, $4)
+          $1, $2, $3, $4, $5 )
           RETURNING id'
-    values = [@name, @start_time, @price, @capacity]
+    values = [@name, @set_date, @start_time, @price, @capacity]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
@@ -39,12 +41,13 @@ class GroupExercise
     sql = 'UPDATE groupexercises
     SET (
     name,
+    set_date,
     start_time,
     price,
     capacity) =
-    ( $1, $2, $3, $4)
-    WHERE id = $5'
-    values = [@name, @start_time, @price, @capacity, @id]
+    ( $1, $2, $3, $4, $5 )
+    WHERE id = $6'
+    values = [@name, @set_date, @start_time, @price, @capacity, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -83,7 +86,8 @@ class GroupExercise
   end
 
   def self.all
-      sql = 'SELECT * FROM groupexercises'
+      sql = 'SELECT * FROM groupexercises
+      ORDER BY start_time'
       results = SqlRunner.run(sql)
       return results.map { |group| GroupExercise.new( group ) }
   end

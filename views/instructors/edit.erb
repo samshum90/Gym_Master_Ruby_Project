@@ -1,0 +1,32 @@
+<h1>Edit <%= @instructors.format_name %></h1>
+
+<form method="POST" action="/instructors/<%= @instructors.id %>">
+
+    <div class>
+      <label for="first_name">First Name:</label>
+      <input type="text"
+        name="first_name"
+        id="first_name"
+        value="<%= @instructors.first_name %>"/>
+    </div>
+
+    <div class>
+      <label for="last_name">Last Name:</label>
+      <input type="text"
+        name="last_name"
+        id="last_name"
+        value="<%= @instructors.last_name %>"/>
+    </div>
+
+    <div class>
+      <label for="speciality">Speciality:</label>
+      <input type="text"
+        name="speciality"
+        id="speciality"
+        value="<%= @instructors.speciality %>"/>
+    </div>
+
+
+
+  <input class type='submit' value="edit">
+</form>
