@@ -9,6 +9,10 @@
     <th>Price</th>
     <th></th>
     <th>Capacity</th>
+    <th></th>
+    <th>Number Booked</th>
+    <th></th>
+    <th>Membership Needed</th>
   </tr>
   <% for group in @group %>
   <tr>
@@ -19,6 +23,11 @@
     <td><%= group.price %></td>
     <td>|</td>
     <td><%= group.capacity %></td>
+    <td>|</td>
+    <td><%= group.booked %></td>
+    <td>|</td>
+    <td><%= group.membership_needed_check %></td>
+    <td>|</td>
     <td>
     <form action="/groupexercises/<%= group.id %>/delete" method="POST">
       <input type="submit" value="delete">

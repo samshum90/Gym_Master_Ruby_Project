@@ -2,7 +2,7 @@ require_relative('../db/sql_runner')
 
 class Member
 
-  attr_accessor :first_name, :last_name, :date_of_birth, :membership_type
+  attr_accessor :first_name, :last_name, :date_of_birth, :membership_type, :membership_status
   attr_reader :id
 
   def initialize(options)
@@ -11,6 +11,7 @@ class Member
     @last_name = options['last_name']
     @date_of_birth = options['date_of_birth']
     @membership_type  = options['membership_type']
+    @membership_status = options['membership_status']
   end
 
   def format_name
@@ -22,11 +23,12 @@ class Member
           first_name,
           last_name,
           date_of_birth,
-          membership_type )
+          membership_type,
+          membership_status )
           VALUES(
-          $1, $2, $3, $4)
+          $1, $2, $3, $4, $5)
           RETURNING id'
-    values = [@first_name, @last_name, @date_of_birth, @membership_type]
+    values = [@first_name, @last_name, @date_of_birth, @membership_type, @membership_status]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
@@ -37,10 +39,11 @@ class Member
     first_name,
     last_name,
     date_of_birth,
-    membership_type ) =
-    ( $1, $2, $3, $4)
-    WHERE id = $5'
-    values = [@first_name, @last_name, @date_of_birth, @membership_type , @id]
+    membership_type,
+    membership_status ) =
+    ( $1, $2, $3, $4, 5)
+    WHERE id = $6'
+    values = [@first_name, @last_name, @date_of_birth, @membership_type, @membership_status, @id]
     SqlRunner.run(sql, values)
   end
 
