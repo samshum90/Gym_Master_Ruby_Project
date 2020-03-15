@@ -3,6 +3,7 @@ require( 'sinatra/contrib/all' )
 require_relative('controllers/groupexercises_controller')
 require_relative('controllers/members_controller')
 require_relative('controllers/bookings_controller')
+require_relative('controllers/instructors_controller')
 
 get '/' do
   erb( :index )

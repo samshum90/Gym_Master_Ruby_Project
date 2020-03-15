@@ -1,0 +1,11 @@
+<h1>Instructor name: <%= @instructors.format_name %></h1>
+
+<p>speciality: <%= @instructors.speciality %></p>
+
+
+<h3>Classes:</h3>
+<ul>
+  <% @instructors.groupexercise.each do |classes| %>
+  <li><%= classes.name %></li>
+  <% end %>
+</ul>

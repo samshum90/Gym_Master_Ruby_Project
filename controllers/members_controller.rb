@@ -25,12 +25,28 @@ end
 
 post '/members' do
   member = Member.new(params)
+  member.membership_status = "Active"
+  member.update
   member.save
   redirect to("/members")
 end
 
 post '/members/:id/delete' do
   Member.delete(params[:id])
+  redirect to("/members")
+end
+
+post '/members/:id/deactivate' do
+  members = Member.find(params['id'].to_i)
+  members.membership_status = "Deactived"
+  members.update
+  redirect to("/members")
+end
+
+post '/members/:id/activate' do
+  members = Member.find(params['id'].to_i)
+  members.membership_status = "Active"
+  members.update
   redirect to("/members")
 end
 

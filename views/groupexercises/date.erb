@@ -1,0 +1,48 @@
+<h1>Classes</h1>
+<table>
+  <tr>
+    <% current_date = Date.today %>
+    <th><%= current_date %></th>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th>Start Time</th>
+    <th></th>
+    <th>Price</th>
+    <th></th>
+    <th>Capacity</th>
+    <th></th>
+    <th>Number Booked</th>
+    <th></th>
+    <th>Membership Needed</th>
+  </tr>
+  <% for group in @group %>
+  <% if group.set_date == current_date.to_s %>
+  <tr>
+    <td><a href="/groupexercises/<%= group.id %>"><%= group.name %></a></td>
+    <td>|</td>
+    <td><%= group.start_time %></td>
+    <td>|</td>
+    <td><%= group.price %></td>
+    <td>|</td>
+    <td><%= group.capacity %></td>
+    <td>|</td>
+    <td><%= group.booked %></td>
+    <td>|</td>
+    <td><%= group.membership_needed_check %></td>
+    <td>|</td>
+    <td>
+    <form action="/groupexercises/<%= group.id %>/delete" method="POST">
+      <input type="submit" value="delete">
+    </form>
+    </td>
+    <td>
+      <a href="/groupexercises/<%= group.id %>/edit">
+        <input type="submit" value="edit">
+      </a>
+    </td>
+  </tr>
+  <% end %>
+  <% end %>
+</table>

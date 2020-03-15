@@ -1,15 +1,37 @@
 require_relative('../models/groupexercise')
 require_relative('../models/member')
 require_relative('../models/booking')
+require_relative('../models/instructor')
+
 
 require("pry-byebug")
 
 GroupExercise.delete_all()
 Member.delete_all()
 Booking.delete_all()
+Instructor.delete_all()
+
+d = Date.today.to_s
+d1 = Date.today + 1
+
+
+instructor1 = Instructor.new({
+  'first_name' => 'Elaine',
+  'last_name' => 'Kong',
+  'speciality' => 'Legs'
+  })
+instructor1.save
+
+instructor2 = Instructor.new({
+  'first_name' => 'Daryl',
+  'last_name' => 'Nichole',
+  'speciality' => 'Weight Lifting'
+  })
+instructor2.save
 
 group1 = GroupExercise.new({
   'name' => 'Pilates',
+  'set_date' => d,
   'start_time' => '13:00:00',
   'price' => 5.00,
   'capacity' => 10})
@@ -17,19 +39,34 @@ group1.save
 
 group2 = GroupExercise.new({
   'name' => 'Strength',
+  'set_date' => d,
   'start_time' => '19:00:00',
   'price' => 7.00,
   'capacity' => 7})
 group2.save
 
+group3 = GroupExercise.new({
+  'name' => 'Cycling',
+  'set_date' => d,
+  'start_time' => '14:00:00',
+  'price' => 3.00,
+  'capacity' => 6})
+group3.save
+
+group4 = GroupExercise.new({
+  'name' => "Teen's time",
+  'set_date' => d1.to_s,
+  'start_time' => '09:00:00',
+  'price' => 1.00,
+  'capacity' => 6})
+group4.save
 
 member1 = Member.new({
   'first_name' => 'Robin',
   'last_name' => 'Gribbles',
   'date_of_birth' => '1991-06-01',
   'membership_type' => 'Peak',
-  'membership_status' => 'Active'
-  })
+  'membership_status' => 'Active'})
 member1.save
 
 member2 = Member.new({
@@ -37,8 +74,7 @@ member2 = Member.new({
   'last_name' => 'Suen',
   'date_of_birth' => '1999-04-10',
   'membership_type' => 'Peak',
-  'membership_status' => 'Active'
-  })
+  'membership_status' => 'Active'})
 member2.save
 
 member3 = Member.new({
@@ -46,8 +82,7 @@ member3 = Member.new({
   'last_name' => 'Mcdonald',
   'date_of_birth' => '1996-08-01',
   'membership_type' => 'Peak',
-  'membership_status' => 'Active'
-  })
+  'membership_status' => 'Active'})
 member3.save
 
 member4 = Member.new({
@@ -55,8 +90,7 @@ member4 = Member.new({
   'last_name' => 'Raphael',
   'date_of_birth' => '1980-12-19',
   'membership_type' => 'Off-Peak',
-  'membership_status' => 'Active'
-  })
+  'membership_status' => 'Active'})
 member4.save
 
 member5 = Member.new({
@@ -64,8 +98,7 @@ member5 = Member.new({
   'last_name' => 'Ward',
   'date_of_birth' => '1978-09-22',
   'membership_type' => 'Off-Peak',
-  'membership_status' => 'Active'
-  })
+  'membership_status' => 'Active'})
 member5.save
 
 member6 = Member.new({
@@ -73,8 +106,7 @@ member6 = Member.new({
   'last_name' => 'Blogs',
   'date_of_birth' => '1962-01-22',
   'membership_type' => 'Off-Peak',
-  'membership_status' => 'Active'
-  })
+  'membership_status' => 'Active'})
 member6.save
 
 member7 = Member.new({
@@ -82,15 +114,28 @@ member7 = Member.new({
   'last_name' => 'High',
   'date_of_birth' => '2001-04-11',
   'membership_type' => 'Off-Peak',
-  'membership_status' => 'Deactive'
-  })
+  'membership_status' => 'Deactived'})
 member7.save
+
+member8 = Member.new({
+  'first_name' => 'Juliea',
+  'last_name' => 'Roberts',
+  'date_of_birth' => '1943-07-28',
+  'membership_type' => 'Off-Peak',
+  'membership_status' => 'Active'})
+member8.save
 
 booking1 = Booking.new({
   'member_id' => member1.id,
   'groupexercise_id' => group1.id
   })
 booking1.save
+
+booking1s = Booking.new({
+  'member_id' => member1.id,
+  'groupexercise_id' => group3.id
+  })
+booking1s.save
 
 booking2 = Booking.new({
   'member_id' => member2.id,

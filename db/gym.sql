@@ -1,10 +1,19 @@
 DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS groupexercises;
+DROP TABLE IF EXISTS instructors;
+
+CREATE TABLE instructors(
+  id SERIAL PRIMARY KEY,
+  first_name VARCHAR(255),
+  last_name VARCHAR(255),
+  speciality VARCHAR(255)
+);
 
 CREATE TABLE groupexercises(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
+  set_date DATE,
   start_time TIME(0) NOT NULL,
   price DECIMAL(5,2),
   capacity INT
