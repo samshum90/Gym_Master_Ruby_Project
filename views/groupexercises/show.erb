@@ -1,4 +1,4 @@
-<h1>class: <%= @group.name %></h1>
+<h1><%= @group.name %> Class</h1>
 
 <p>Start Time: <%= @group.start_time %></p>
 
@@ -6,9 +6,24 @@
 
 <p>Capacity: <%= @group.capacity %></p>
 
-<h3>Registered Members:</h3>
-<ul>
+<a href="/bookings/<%= @group.id %>/new">
+  <input type="submit"
+  value="Book class"></input>
+</a>
+
+<table>
+<th>Registered Members:</th>
   <% @group.members.each do |member| %>
-  <li><%= member.format_name %></li>
+  <tr>
+    <td><%= member.format_name %></td>
+    <td></td>
+    <td>
+      <form action="/bookings/<%= member.find_booking_id %>/delete" method="POST">
+        <input type="submit" value="remove">
+      </form>
+    </td>
+
+
+  </tr>
   <% end %>
-</ul>
+</table>

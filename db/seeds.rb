@@ -15,6 +15,13 @@ group1 = GroupExercise.new({
   'capacity' => 10})
 group1.save
 
+group2 = GroupExercise.new({
+  'name' => 'Strength',
+  'start_time' => '14:00:00',
+  'price' => 7.00,
+  'capacity' => 7})
+group2.save
+
 
 member1 = Member.new({
   'first_name' => 'Robin',
@@ -82,7 +89,7 @@ booking4.save
 
 booking5 = Booking.new({
   'member_id' => member5.id,
-  'groupexercise_id' => group1.id
+  'groupexercise_id' => group2.id
   })
 booking5.save
 

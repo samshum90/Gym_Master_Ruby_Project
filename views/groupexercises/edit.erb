@@ -1,0 +1,36 @@
+<h1>Edit <%= @groups.name %> Class </h1>
+
+<form action="/groupexercises/<%= @groups.id %>" method="post">
+
+    <div class>
+      <label for="name">Name:</label>
+      <input type="text"
+        name="name"
+        id="name"
+        value="<%= @groups.name %>"/>
+    </div>
+
+    <div class>
+      <label for="start_time">Start Time:</label>
+      <input type="time"
+        name="start_time"
+        id="start_time"
+        value="<%= @groups.start_time %>"/>
+    </div>
+
+    <div class>
+      <label for="price">Price: £</label>
+      <input type="number"
+      name="price"
+      id="price"
+      value="<%= @groups.price %>"/>
+    </div>
+
+    <div class>
+      <label for="capacity">Capacity:</label>
+      <input type="number" name="capacity" id="capacity"
+      value="<%= @groups.capacity %>"/>
+    </div>
+
+  <input class type='submit' value="submit">
+</form>
