@@ -11,8 +11,14 @@ also_reload( '../models/*' )
 get '/bookings/:id/new' do
   @members = Member.all
   @groupexercise_id = params[:id]
-  @sign_up = GroupExercise.find(params[:id]).members.map {|member| member.id}
-  erb(:"/bookings/new")
+  group = GroupExercise.find(params[:id])
+  @membership_check = group.membership_needed_check()
+  @sign_up = group.members.map {|member| member.id}
+  if group.booked.to_i >= group.capacity.to_i
+    erb(:"/bookings/full")
+  else
+    erb(:"/bookings/new")
+  end
 end
 
 post '/bookings/:groupexercise_id/create' do

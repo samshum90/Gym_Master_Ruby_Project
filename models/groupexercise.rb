@@ -2,7 +2,7 @@ require_relative('../db/sql_runner')
 
 class GroupExercise
 
-  attr_accessor :name, :start_time, :price, :capacity, :booked
+  attr_accessor :name, :start_time, :price, :capacity
   attr_reader :id
 
   def initialize(options)
@@ -10,8 +10,15 @@ class GroupExercise
     @name = options['name']
     @start_time = options['start_time']
     @price = options['price']
-    @capacity = options['capacity']
-    @booked = 0
+    @capacity = options['capacity'].to_i
+  end
+
+  def membership_needed_check()
+    if @start_time >= '06:00:00' && @start_time <= '16:00:00'
+      return 'Peak'
+    else
+      return 'Off-Peak'
+    end
   end
 
   def save()
@@ -41,7 +48,7 @@ class GroupExercise
     SqlRunner.run(sql, values)
   end
 
-  def members
+  def members()
     sql = "SELECT m.* FROM members m
     INNER JOIN bookings b
     ON b.member_id = m.id
@@ -49,6 +56,15 @@ class GroupExercise
     values = [@id]
     results = SqlRunner.run(sql, values)
     return results.map { |member| Member.new(member) }
+  end
+
+  def booked()
+    sql = "SELECT * FROM bookings
+    WHERE groupexercise_id = $1"
+    values = [@id]
+    booked = SqlRunner.run(sql, values)
+    map = booked.map{|booking| Booking.new(booking)}.size
+    return map.to_i
   end
 
   def self.delete(id)

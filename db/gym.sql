@@ -15,7 +15,8 @@ CREATE TABLE members(
   first_name VARCHAR(255),
   last_name VARCHAR(255),
   date_of_birth DATE,
-  membership_type VARCHAR(255)
+  membership_type VARCHAR(255),
+  membership_status VARCHAR(255)
 );
 
 CREATE TABLE bookings(

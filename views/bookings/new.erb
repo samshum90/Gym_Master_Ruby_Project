@@ -5,8 +5,12 @@
     Select a member:
     <select name="member_id">
       <% for member in @members %>
-      <% if !@sign_up.include? member.id %>
+        <% if member.membership_status == "Active" %>
+        <% if member.membership_type == @membership_check %>
+        <% if !@sign_up.include? member.id %>
       <option value="<%= member.id %>"><%= member.format_name %></option>
+      <% end %>
+      <% end %>
       <% end %>
       <% end %>
     </select>

@@ -11,7 +11,8 @@ class TestMember < MiniTest::Test
       'first_name' => 'Robin',
       'last_name' => 'Gribbles',
       'date_of_birth' => '1991-06-01',
-      'membership_type' => 'peak'
+      'membership_type' => 'peak',
+      'membership_status' => 'Active'
       }
     @members = Member.new(options)
   end
@@ -39,5 +40,10 @@ class TestMember < MiniTest::Test
   def test_format_name()
     result = @members.format_name()
     assert_equal('Robin Gribbles', result)
+  end
+
+  def test_membership_status()
+    result = @members.membership_status()
+    assert_equal('Active', result)
   end
 end
