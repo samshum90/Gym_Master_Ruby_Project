@@ -54,6 +54,23 @@ class Member
     return results.map { |group| GroupExercise.new(group) }
   end
 
+  def bookings()
+    sql = "SELECT * FROM bookings
+    WHERE member_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.map{|booking| Booking.new(booking)}
+  end
+
+  def find_booking_id()
+    sql = "SELECT * FROM bookings
+    WHERE member_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    booking = Booking.new(results.first)
+    return booking.id
+  end
+
   def self.find(id)
     sql = 'SELECT * FROM members
     WHERE id = $1'

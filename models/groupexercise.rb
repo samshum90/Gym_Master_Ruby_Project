@@ -2,7 +2,7 @@ require_relative('../db/sql_runner')
 
 class GroupExercise
 
-  attr_accessor :name, :start_time, :price, :capacity
+  attr_accessor :name, :start_time, :price, :capacity, :booked
   attr_reader :id
 
   def initialize(options)
@@ -62,8 +62,8 @@ class GroupExercise
     sql = 'SELECT * FROM groupexercises
     WHERE id = $1'
     values = [id]
-    results = SqlRunner.run( sql, values )
-    return GroupExercise.new( results.first )
+    results = SqlRunner.run(sql, values)
+    return GroupExercise.new(results.first)
   end
 
   def self.all

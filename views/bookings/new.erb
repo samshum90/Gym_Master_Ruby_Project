@@ -1,0 +1,16 @@
+<h1>Booking System</h1>
+
+<form  action="/bookings/<%= @groupexercise_id %>/create" method="post">
+  <label id ="new_booking">
+    Select a member:
+    <select name="member_id">
+      <% for member in @members %>
+      <% if !@sign_up.include? member.id %>
+      <option value="<%= member.id %>"><%= member.format_name %></option>
+      <% end %>
+      <% end %>
+    </select>
+  </label>
+  <br /><br /><br /><br />
+  <input class="button-forms" type='submit' value="Add to class">
+</form>

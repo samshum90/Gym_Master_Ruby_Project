@@ -1,0 +1,29 @@
+<h1>New Member</h1>
+
+<form action="/members" method="post">
+
+    <div class>
+      <label for="first_name">First Name:</label>
+      <input type="text" name="first_name" id="first_name"/>
+    </div>
+
+    <div class>
+      <label for="last_name">Last Name:</label>
+      <input type="text" name="last_name" id="last_name"/>
+    </div>
+
+    <div class>
+      <label for="date_of_birth">Date Of Birth:</label>
+      <input type="date" name="date_of_birth" id="date_of_birth"/>
+    </div>
+
+    <div class>
+      <label for="membership_select">Select Membership:</label>
+      <select name="membership_type" id="membership_select">
+            <option value="Peak">Peak</option>
+            <option value="Off-Peak">Off-Peak</option>
+      </select>
+    </div>
+
+  <input class type='submit' value="Create">
+</form>
