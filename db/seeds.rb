@@ -2,6 +2,7 @@ require_relative('../models/groupexercise')
 require_relative('../models/member')
 require_relative('../models/booking')
 require_relative('../models/instructor')
+require_relative('../models/schedule')
 
 
 require("pry-byebug")
@@ -34,7 +35,8 @@ group1 = GroupExercise.new({
   'set_date' => d,
   'start_time' => '13:00:00',
   'price' => 5.00,
-  'capacity' => 10})
+  'capacity' => 10,
+  'instructor_id' => instructor1.id})
 group1.save
 
 group2 = GroupExercise.new({
@@ -42,7 +44,8 @@ group2 = GroupExercise.new({
   'set_date' => d,
   'start_time' => '19:00:00',
   'price' => 7.00,
-  'capacity' => 7})
+  'capacity' => 7,
+  'instructor_id' => instructor2.id})
 group2.save
 
 group3 = GroupExercise.new({
@@ -50,7 +53,8 @@ group3 = GroupExercise.new({
   'set_date' => d,
   'start_time' => '14:00:00',
   'price' => 3.00,
-  'capacity' => 6})
+  'capacity' => 6,
+  'instructor_id' => instructor1.id})
 group3.save
 
 group4 = GroupExercise.new({
@@ -58,7 +62,8 @@ group4 = GroupExercise.new({
   'set_date' => d1.to_s,
   'start_time' => '09:00:00',
   'price' => 1.00,
-  'capacity' => 6})
+  'capacity' => 6,
+  'instructor_id' => instructor1.id})
 group4.save
 
 member1 = Member.new({
@@ -125,6 +130,22 @@ member8 = Member.new({
   'membership_status' => 'Active'})
 member8.save
 
+member9 = Member.new({
+  'first_name' => 'Jack',
+  'last_name' => 'Sparrow',
+  'date_of_birth' => '2001-10-08',
+  'membership_type' => 'Peak',
+  'membership_status' => 'Active'})
+member9.save
+
+member10 = Member.new({
+  'first_name' => 'Jessie',
+  'last_name' => 'James',
+  'date_of_birth' => '1993-10-07',
+  'membership_type' => 'Peak',
+  'membership_status' => 'Active'})
+member10.save
+
 booking1 = Booking.new({
   'member_id' => member1.id,
   'groupexercise_id' => group1.id
@@ -172,6 +193,20 @@ booking7 = Booking.new({
   'groupexercise_id' => group2.id
   })
 booking7.save
+
+schedule1 = Schedule.new({
+  'instructor_id' => instructor1.id,
+  'member_id' => member1.id,
+  'meeting_time' => '13:00:00'
+  })
+schedule1.save
+
+schedule2 = Schedule.new({
+  'instructor_id' => instructor2.id,
+  'member_id' => member2.id,
+  'meeting_time' => '13:00:00'
+  })
+schedule2.save
 
 
 binding.pry

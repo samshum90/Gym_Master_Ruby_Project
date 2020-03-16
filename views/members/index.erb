@@ -15,6 +15,8 @@
     <td>Date Of Birth</td>
     <td></td>
     <td>Membership Type</td>
+    <td></td>
+    <td>Personal Trainers</td>
   </tr>
   <% for member in @members %>
   <% if member.membership_status == "Active" %>
@@ -26,19 +28,29 @@
       <td><%= member.date_of_birth %></td>
       <td>|</td>
       <td><%= member.membership_type %></td>
+      <td>|</td>
+      <td><% member.instructors.each do |instructor| %>
+        <%= instructor.format_name %>
+      <% end %></td>
       <td>
+
         <a href="/members/<%= member.id %>/edit" >
-          <input type="submit" value="edit">
+          <input type="submit" value="Edit">
         </a>
       </td>
       <td>
+        <form action="/schedules/<%= member.id %>/new" method="POST">
+          <input type="submit" value="Assign Instructors">
+        </form>
+      </td>
+      <td>
         <form action="/members/<%= member.id %>/deactivate" method="POST">
-          <input type="submit" value="deactivate">
+          <input type="submit" value="Deactivate">
         </form>
       </td>
       <td>
         <form action="/members/<%= member.id %>/delete" method="POST">
-          <input type="submit" value="delete">
+          <input type="submit" value="Delete">
         </form>
       </td>
     </tr>

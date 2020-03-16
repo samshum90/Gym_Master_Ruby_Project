@@ -4,6 +4,8 @@
   <tr>
     <th>Name</th>
     <th></th>
+    <th>Date</th>
+    <th></th>
     <th>Start Time</th>
     <th></th>
     <th>Price</th>
@@ -17,6 +19,8 @@
   <% for group in @group %>
   <tr>
     <td><a href="/groupexercises/<%= group.id %>"><%= group.name %></a></td>
+    <td>|</td>
+    <td><%= group.set_date.strftime("%d %m %Y") %></td>
     <td>|</td>
     <td><%= group.start_time %></td>
     <td>|</td>

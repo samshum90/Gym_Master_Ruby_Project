@@ -40,7 +40,8 @@ class Member
     last_name,
     date_of_birth,
     membership_type,
-    membership_status) =
+    membership_status
+    ) =
     ( $1, $2, $3, $4, $5 )
     WHERE id = $6'
     values = [@first_name, @last_name, @date_of_birth, @membership_type, @membership_status, @id]
@@ -51,7 +52,7 @@ class Member
     sql = "SELECT m.* FROM groupexercises m
     INNER JOIN bookings b
     ON b.groupexercise_id = m.id
-    WHERE b.member_id = $1;"
+    WHERE b.member_id = $1"
     values = [@id]
     results = SqlRunner.run(sql, values)
     return results.map { |group| GroupExercise.new(group) }
@@ -63,6 +64,17 @@ class Member
     values = [@id]
     results = SqlRunner.run(sql, values)
     return results.map{|booking| Booking.new(booking)}
+  end
+
+  def instructors()
+    sql = "SELECT i.* FROM instructors i
+    INNER JOIN schedules s
+    ON s.instructor_id = i.id
+    WHERE s.member_id = $1"
+    values = [@id]
+    instructors = SqlRunner.run(sql, values)
+    results = instructors.map{|instructor|Instructor.new(instructor)}
+     return results
   end
 
   def find_booking_id()

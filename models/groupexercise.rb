@@ -1,17 +1,21 @@
 require_relative('../db/sql_runner')
+require('pry')
+require('date')
 
 class GroupExercise
 
   attr_accessor :name, :set_date, :start_time, :price, :capacity
-  attr_reader :id
+  attr_reader :id, :instructor_id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
-    @set_date = options['set_date']
+    set_date_as_array = options['set_date'].split("-")
+    @set_date = Date.new(set_date_as_array[0].to_i,set_date_as_array[1].to_i,set_date_as_array[2].to_i)
     @start_time = options['start_time']
     @price = options['price']
     @capacity = options['capacity'].to_i
+    @instructor_id = options['instructor_id'].to_i
   end
 
   def membership_needed_check()
@@ -28,11 +32,12 @@ class GroupExercise
           set_date,
           start_time,
           price,
-          capacity)
+          capacity,
+          instructor_id)
           VALUES(
-          $1, $2, $3, $4, $5 )
+          $1, $2, $3, $4, $5, $6 )
           RETURNING id'
-    values = [@name, @set_date, @start_time, @price, @capacity]
+    values = [@name, @set_date, @start_time, @price, @capacity, @instructor_id]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
@@ -44,10 +49,11 @@ class GroupExercise
     set_date,
     start_time,
     price,
-    capacity) =
-    ( $1, $2, $3, $4, $5 )
-    WHERE id = $6'
-    values = [@name, @set_date, @start_time, @price, @capacity, @id]
+    capacity,
+    instructor_id) =
+    ( $1, $2, $3, $4, $5, $6 )
+    WHERE id = $7'
+    values = [@name, @set_date, @start_time, @price, @capacity, @instructor_id, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -87,7 +93,7 @@ class GroupExercise
 
   def self.all
       sql = 'SELECT * FROM groupexercises
-      ORDER BY start_time'
+      ORDER BY set_date, start_time'
       results = SqlRunner.run(sql)
       return results.map { |group| GroupExercise.new( group ) }
   end

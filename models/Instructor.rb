@@ -46,8 +46,8 @@ class Instructor
 
     def groupexercise
       sql = "SELECT * FROM groupexercises
-      WHERE = $1;"
-      values = [@groupexercise_id]
+      WHERE instructor_id = $1 "
+      values = [@id]
       results = SqlRunner.run(sql, values)
       return results.map { |group| GroupExercise.new(group) }
     end

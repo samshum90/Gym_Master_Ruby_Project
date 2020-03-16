@@ -1,5 +1,6 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
+require('pry')
 require_relative( '../models/member.rb' )
 also_reload( '../models/*' )
 
