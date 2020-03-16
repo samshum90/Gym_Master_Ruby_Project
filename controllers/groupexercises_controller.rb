@@ -18,6 +18,11 @@ get '/groupexercises/date' do
   erb(:"groupexercises/date")
 end
 
+get '/groupexercises/day' do
+  @group = GroupExercise.all()
+  erb(:"groupexercises/day")
+end
+
 get '/groupexercises/:id' do
   @group = GroupExercise.find(params['id'].to_i)
   erb(:"groupexercises/show")

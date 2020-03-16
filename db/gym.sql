@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS bookings;
+DROP TABLE IF EXISTS schedules;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS groupexercises;
 DROP TABLE IF EXISTS instructors;
@@ -16,7 +17,8 @@ CREATE TABLE groupexercises(
   set_date DATE,
   start_time TIME(0) NOT NULL,
   price DECIMAL(5,2),
-  capacity INT
+  capacity INT,
+  instructor_id INT references instructors(id) ON DELETE CASCADE
 );
 
 CREATE TABLE members(
@@ -26,6 +28,13 @@ CREATE TABLE members(
   date_of_birth DATE,
   membership_type VARCHAR(255),
   membership_status VARCHAR(255)
+);
+
+CREATE TABLE schedules(
+  id SERIAL PRIMARY KEY,
+  instructor_id INT references instructors(id) ON DELETE CASCADE,
+  member_id INT references members(id) ON DELETE CASCADE,
+  meeting_time TIME(0) NOT NULL
 );
 
 CREATE TABLE bookings(
