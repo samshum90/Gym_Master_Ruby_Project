@@ -12,14 +12,13 @@ get '/schedules/:id/new' do
   @instructors = Instructor.all
   @member_id = params[:id]
   member = Member.find(params[:id])
-  @sign_up = member.instructors.map {|instructor| instructor.id}
     erb(:"/schedules/new")
 end
 
 post '/schedules/:member_id/create' do
-  schedule = Schedule.new(params)
-  schedule.save
-  redirect to ("/members/index")
+  @schedule = Schedule.new(params)
+  @schedule.save
+  redirect to ("/members/#{params[:member_id]}")
 end
 
 post '/schedules/:id/delete_in_instructor' do
