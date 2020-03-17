@@ -1,12 +1,58 @@
-<h1>Member name: <%= @members.format_name %></h1>
+<h1>Member name:
+  <%= @members.format_name %></h1>
 
-<p>Date of Birth: <%= @members.date_of_birth %></p>
+<p>Date of Birth:
+  <%= @members.date_of_birth.strftime("%d/%m/%Y") %></p>
 
 <p>Membership Type:<%= @members.membership_type %></p>
 
-<h3>Classes:</h3>
-<ul>
-  <% @members.groupexercise.each do |classes| %>
-  <li><%= classes.name %></li>
+<% if @members.groupexercise.count == 0 %>
+<% else %>
+  <h3>Classes:</h3>
+  <table>
+    <tr>
+      <th>Class Name</th>
+      <th>Time</th>
+    </tr>
+    <tr>
+      <% @members.groupexercise.each do |classes| %>
+        <tr>
+          <td><%= classes.name %></td>
+          <td><%= classes.start_time %></td>
+          <td>
+            <form action="/bookings/<%= classes.find_booking_id %>/delete_in_members" method="POST">
+              <input type="submit" value="remove">
+            </form>
+          </td>
+        </tr>
+      <% end %>
+    </tr>
+  </table>
+<% end %>
+
+<% if @members.instructors.count == 0 %>
+<% else %>
+  <h3>Instructors:</h3>
+    <form action="/schedules/<%= member.id %>/new" method="get">
+      <input type="submit" value="Schedule a personal trainer">
+    </form>
+  <table>
+    <tr>
+      <th>Instructor Name</th>
+      <th>Meeting Time</th>
+    </tr>
+    <tr>
+      <% @members.instructors.each do |instructor| %>
+        <td><%= instructor.format_name %></td>
+        <% instructor.schedules.each do |schedule| %>
+          <td><%= schedule.meeting_time%></td>
+          <td>
+            <form action="/schedules/<%= schedule.id %>/delete" method="POST">
+              <input type="submit" value="remove">
+            </form>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
   <% end %>
-</ul>
+</table>

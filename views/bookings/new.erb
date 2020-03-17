@@ -6,12 +6,12 @@
     <select name="member_id">
       <% for member in @members %>
         <% if member.membership_status == "Active" && member.membership_type == @membership_check && !@sign_up.include?(member.id) %>
-      <option value="<%= member.id %>"><%= member.format_name %></option>
-      <% end %>
+          <option value="<%= member.id %>"><%= member.format_name %></option>
+        <% end %>
       <% end %>
     </select>
   </label>
   <br /><br />
   <br /><br />
-  <input class="button-forms" type='submit' value="Add to class">
+  <input type='submit' value="Add to class">
 </form>

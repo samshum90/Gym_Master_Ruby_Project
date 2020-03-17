@@ -1,6 +1,7 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
 require_relative( '../models/groupexercise.rb' )
+require_relative( '../models/instructor.rb' )
 also_reload( '../models/*' )
 
 get '/groupexercises' do
@@ -10,6 +11,7 @@ end
 
 get '/groupexercises/new' do
   @group = GroupExercise.all
+  @instructor = Instructor.all
   erb(:"groupexercises/new")
 end
 

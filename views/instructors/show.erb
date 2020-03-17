@@ -1,10 +1,53 @@
-<h1>Instructor name: <%= @instructors.format_name %></h1>
+<h1>Instructor name:
+  <%= @instructors.format_name %></h1>
 
-<p>speciality: <%= @instructors.speciality %></p>
+<p>Speciality:
+  <%= @instructors.speciality %></p>
 
-<h3>Classes:</h3>
-<ul>
-  <% @instructors.groupexercise.each do |classes| %>
-  <li><%= classes.name %></li>
+
+  <h3>Scheduled Meetings:</h3>
+  <table>
+    <tr>
+      <th>Member Name</th>
+      <th>Time</th>
+    </tr>
+    <% if @instructors.members.count == 0 %>
+    <% else %>
+    <tr>
+      <% @instructors.members.each do |member| %>
+        <td><%= member.format_name %></td>
+        <% if member.schedules.count == 0 %>
+        <% else %>
+        <% member.schedules.each do |schedule| %>
+          <td><%= schedule.meeting_time%></td>
+          <td>
+            <form action="/schedules/<%= schedule.id %>/delete" method="POST">
+              <input type="submit" value="remove">
+            </form>
+          </td>
+          <% end %>
+          <% end %>
+      </tr>
+    <% end %>
   <% end %>
-</ul>
+</table>
+
+<% if @instructors.groupexercise.count == 0 %>
+<% else %>
+  <h3>Scheduled Classes:</h3>
+  <table>
+    <tr>
+      <th>Class Name</th>
+      <th>Time</th>
+      <th>No. Booked</th>
+    </tr>
+
+      <% @instructors.groupexercise.each do |classes| %>
+      <tr>
+        <td><%= classes.name %></td>
+        <td><%= classes.start_time%></td>
+        <td><%= classes.booked%></td>
+        </tr>
+        <% end %>
+    <% end %>
+</table>

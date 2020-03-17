@@ -24,7 +24,20 @@ attr_accessor :meeting_time
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
-  
+
+  def update()
+    sql = 'UPDATE schedules
+    SET (
+      instructor_id,
+      member_id,
+      meeting_time )
+    =
+    ( $1, $2, $3 )
+    WHERE id = $4'
+    values = [@instructor_id, @member_id, @meeting_time, @id]
+    SqlRunner.run(sql, values)
+  end
+
   def members()
     sql = "SELECT * FROM members
     WHERE id = $1"

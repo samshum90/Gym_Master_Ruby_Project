@@ -1,4 +1,7 @@
 <h1>Classes</h1>
+<a href="/groupexercises/new">
+  <input type="submit" value="create">
+</a>
 
 <table>
   <tr>
@@ -20,7 +23,7 @@
   <tr>
     <td><a href="/groupexercises/<%= group.id %>"><%= group.name %></a></td>
     <td>|</td>
-    <td><%= group.set_date.strftime("%d %m %Y") %></td>
+    <td><%= group.set_date.strftime("%d/%m/%Y") %></td>
     <td>|</td>
     <td><%= group.start_time %></td>
     <td>|</td>

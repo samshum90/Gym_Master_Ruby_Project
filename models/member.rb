@@ -9,7 +9,8 @@ class Member
     @id = options['id'].to_i if options['id']
     @first_name = options['first_name']
     @last_name = options['last_name']
-    @date_of_birth = options['date_of_birth']
+    set_date_as_array = options['date_of_birth'].split("-")
+    @date_of_birth = Date.new(set_date_as_array[0].to_i,set_date_as_array[1].to_i,set_date_as_array[2].to_i)
     @membership_type  = options['membership_type']
     @membership_status = options['membership_status']
   end
@@ -66,6 +67,14 @@ class Member
     return results.map{|booking| Booking.new(booking)}
   end
 
+  def schedules()
+    sql = "SELECT * FROM schedules
+    WHERE member_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.map{|schedules| Schedule.new(schedules)}
+  end
+
   def instructors()
     sql = "SELECT i.* FROM instructors i
     INNER JOIN schedules s
@@ -73,8 +82,7 @@ class Member
     WHERE s.member_id = $1"
     values = [@id]
     instructors = SqlRunner.run(sql, values)
-    results = instructors.map{|instructor|Instructor.new(instructor)}
-     return results
+    return instructors.map{|instructor|Instructor.new(instructor)}
   end
 
   def find_booking_id()

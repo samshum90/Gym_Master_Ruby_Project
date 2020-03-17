@@ -1,7 +1,7 @@
 <h1>Classes</h1>
 <table>
   <tr>
-    <% current_date = Date.today %>
+    <% current_date = Date.today.strftime("%d/%m/%Y") %>
     <th><%= current_date %></th>
   </tr>
   <tr>
@@ -18,7 +18,7 @@
     <th>Membership Needed</th>
   </tr>
   <% for group in @group %>
-  <% if group.set_date == current_date.to_s %>
+  <% if group.set_date == current_date  %>
   <tr>
     <td><a href="/groupexercises/<%= group.id %>"><%= group.name %></a></td>
     <td>|</td>

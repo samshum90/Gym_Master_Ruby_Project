@@ -4,6 +4,7 @@ require( 'pry-byebug' )
 require_relative( '../models/instructor.rb' )
 require_relative( '../models/member.rb' )
 require_relative( '../models/groupexercise.rb' )
+require_relative( '../models/schedule.rb' )
 
 also_reload( '../models/*' )
 
@@ -12,18 +13,23 @@ get '/schedules/:id/new' do
   @member_id = params[:id]
   member = Member.find(params[:id])
   @sign_up = member.instructors.map {|instructor| instructor.id}
-    erb(:"/bookings/new")
+    erb(:"/schedules/new")
 end
 
 post '/schedules/:member_id/create' do
   schedule = Schedule.new(params)
   schedule.save
-  redirect to ("/members/#{params['member_id']}")
+  redirect to ("/members/index")
+end
+
+post '/schedules/:id/delete_in_instructor' do
+  schedule = Schedule.find(params[:id])
+  schedule.delete()
+  redirect to ("/instructors/#{schedule.instuctor_id}")
 end
 
 post '/schedules/:id/delete' do
-  schedule = schedule.find(params[:id])
-  group_id = schedule.groupexercise_id
+  schedule = Schedule.find(params[:id])
   schedule.delete()
-  redirect to ("/members/#{member_id}")
+  redirect to ("/members/#{schedule.member_id}")
 end
