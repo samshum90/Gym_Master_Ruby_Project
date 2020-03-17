@@ -15,7 +15,6 @@ Instructor.delete_all()
 d = Date.today.to_s
 d1 = Date.today + 1
 
-
 instructor1 = Instructor.new({
   'first_name' => 'Elaine',
   'last_name' => 'Kong',
@@ -58,11 +57,11 @@ group3 = GroupExercise.new({
 group3.save
 
 group4 = GroupExercise.new({
-  'name' => "Teen's time",
+  'name' => "Yoga",
   'set_date' => d1.to_s,
-  'start_time' => '09:00:00',
+  'start_time' => '17:00:00',
   'price' => 1.00,
-  'capacity' => 6,
+  'capacity' => 4,
   'instructor_id' => instructor1.id})
 group4.save
 
@@ -193,6 +192,30 @@ booking7 = Booking.new({
   'groupexercise_id' => group2.id
   })
 booking7.save
+
+booking8 = Booking.new({
+  'member_id' => member4.id,
+  'groupexercise_id' => group4.id
+  })
+booking8.save
+
+booking9 = Booking.new({
+  'member_id' => member5.id,
+  'groupexercise_id' => group4.id
+  })
+booking9.save
+
+booking10 = Booking.new({
+  'member_id' => member6.id,
+  'groupexercise_id' => group4.id
+  })
+booking10.save
+
+booking11 = Booking.new({
+  'member_id' => member8.id,
+  'groupexercise_id' => group4.id
+  })
+booking11.save
 
 schedule1 = Schedule.new({
   'instructor_id' => instructor1.id,

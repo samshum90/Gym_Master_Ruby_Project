@@ -1,6 +1,6 @@
-<h1>Instructor name:
-  <%= @instructors.format_name %></h1>
-
+<h1>Instructor profile:</h1>
+<p>Name:
+  <%= @instructors.format_name %></p>
 <p>Speciality:
   <%= @instructors.speciality %></p>
 
@@ -13,11 +13,9 @@
     </tr>
     <% if @instructors.members.count == 0 %>
     <% else %>
+    <% @instructors.members.each do |member| %>
     <tr>
-      <% @instructors.members.each do |member| %>
         <td><%= member.format_name %></td>
-        <% if member.schedules.count == 0 %>
-        <% else %>
         <% member.schedules.each do |schedule| %>
           <td><%= schedule.meeting_time%></td>
           <td>
@@ -25,7 +23,6 @@
               <input type="submit" value="remove">
             </form>
           </td>
-          <% end %>
           <% end %>
       </tr>
     <% end %>
@@ -42,18 +39,18 @@
       <th>No. Booked</th>
     </tr>
 
-      <% @instructors.groupexercise.each do |classes| %>
-      <tr>
-        <td><%= classes.name %></td>
-        <td><%= classes.start_time%></td>
-        <td><%= classes.booked%></td>
-        </tr>
+    <% @instructors.groupexercise.each do |classes| %>
+    <tr>
+      <td><%= classes.name %></td>
+      <td><%= classes.start_time%></td>
+      <td><%= classes.booked%></td>
 
-        <td>
-          <form action="/bookings/<%= classes.find_booking_id %>/delete_in_instructors" method="POST">
-            <input type="submit" value="remove">
-          </form>
-        </td>
-        <% end %>
+      <td>
+        <form action="/groupexercises/<%= classes.id %>/edit" method="get">
+          <input type="submit" value="Change">
+        </form>
+      </td>
+      </tr>
+      <% end %>
     <% end %>
 </table>

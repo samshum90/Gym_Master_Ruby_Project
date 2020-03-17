@@ -32,8 +32,10 @@ end
 
 get '/groupexercises/:id/edit' do
   @groups = GroupExercise.find( params[:id] )
+  @instructors = Instructor.all
   erb( :"groupexercises/edit" )
 end
+# change instructor
 
 # create
 post '/groupexercises' do

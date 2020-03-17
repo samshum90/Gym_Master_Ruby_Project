@@ -1,5 +1,7 @@
 <h1><%= @group.name %> Class</h1>
 
+<p>Instructor: <%=@group.instructor_name%></p>
+
 <p>Start Time: <%= @group.start_time %></p>
 
 <p>Date: <%= @group.set_date.strftime("%d/%m/%Y") %></p>
@@ -8,11 +10,13 @@
 
 <p>Capacity: <%= @group.capacity %></p>
 
+<p>Number Booked: <%= @group.booked %></p>
+
 <p>Membership Needed: <%= @group.membership_needed_check  %></p>
 
 <a href="/bookings/<%= @group.id %>/new">
   <input type="submit"
-  value="Book class"></input>
+  value="Book on class"></input>
 </a>
 
 <table>

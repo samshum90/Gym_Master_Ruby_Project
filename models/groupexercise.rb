@@ -76,6 +76,15 @@ class GroupExercise
     return map.to_i
   end
 
+  def instructor_name()
+    sql = "SELECT * FROM instructors
+    WHERE id = $1"
+    values = [@instructor_id]
+    instructor = SqlRunner.run(sql, values)
+    results = Instructor.new(instructor.first)
+    return results.format_name
+  end
+
   def find_booking_id()
     sql = "SELECT * FROM bookings
     WHERE groupexercise_id = $1"

@@ -1,36 +1,43 @@
-<h1>Edit <%= @groups.name %> Class </h1>
+<h1>Edit
+  <%= @groups.name %>
+  Class
+</h1>
 
 <form action="/groupexercises/<%= @groups.id %>" method="post">
 
-    <div class>
-      <label for="name">Name:</label>
-      <input type="text"
-        name="name"
-        id="name"
-        value="<%= @groups.name %>"/>
+  <div class="class">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" value="<%= @groups.name %>"/>
+  </div>
+
+  <div class="class">
+    <label for="instructor_id">Instructor:</label>
+      <select name="instructor_id" id="instructor_id">
+        <% for instructor in @instructors %>
+          <option value="<%= instructor.id %>"><%= instructor.format_name %></option>
+        <% end %>
+      </select>
     </div>
 
-    <div class>
+    <div class="class">
+      <label for="set_date">Date:</label>
+      <input type="date" name="set_date" id="set_date" value="<%= @groups.set_date %>"/>
+    </div>
+
+    <div class="class">
       <label for="start_time">Start Time:</label>
-      <input type="time"
-        name="start_time"
-        id="start_time"
-        value="<%= @groups.start_time %>"/>
+      <input type="time" name="start_time" id="start_time" value="<%= @groups.start_time %>"/>
     </div>
 
-    <div class>
+    <div class="class">
       <label for="price">Price: £</label>
-      <input type="number"
-      name="price"
-      id="price"
-      value="<%= @groups.price %>"/>
+      <input type="number" name="price" id="price" value="<%= @groups.price %>"/>
     </div>
 
-    <div class>
+    <div class="class">
       <label for="capacity">Capacity:</label>
-      <input type="number" name="capacity" id="capacity"
-      value="<%= @groups.capacity %>"/>
+      <input type="number" name="capacity" id="capacity" value="<%= @groups.capacity %>"/>
     </div>
 
-  <input class type='submit' value="submit">
-</form>
+    <input class="class" type='submit' value="submit">
+  </form>
