@@ -4,8 +4,8 @@ require('date')
 
 class GroupExercise
 
-  attr_accessor :name, :set_date, :start_time, :price, :capacity
-  attr_reader :id, :instructor_id
+  attr_accessor :name, :set_date, :start_time, :price, :capacity, :instructor_id
+  attr_reader :id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -74,6 +74,15 @@ class GroupExercise
     booked = SqlRunner.run(sql, values)
     map = booked.map{|booking| Booking.new(booking)}.size
     return map.to_i
+  end
+
+  def find_booking_id()
+    sql = "SELECT * FROM bookings
+    WHERE groupexercise_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    booking = Booking.new(results.first)
+    return booking.id
   end
 
   def self.delete(id)

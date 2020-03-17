@@ -27,6 +27,13 @@ post '/bookings/:groupexercise_id/create' do
   redirect to ("/groupexercises/#{params['groupexercise_id']}")
 end
 
+post '/bookings/:id/delete_in_members' do
+  booking = Booking.find(params[:id])
+  members_id = booking.member_id
+  booking.delete()
+  redirect to ("/members/#{members_id}")
+end
+
 post '/bookings/:id/delete' do
   booking = Booking.find(params[:id])
   group_id = booking.groupexercise_id

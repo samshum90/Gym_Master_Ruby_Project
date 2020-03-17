@@ -52,6 +52,41 @@ class Instructor
       return results.map { |group| GroupExercise.new(group) }
     end
 
+    def schedules()
+      sql = "SELECT * FROM schedules
+      WHERE instructor_id = $1"
+      values = [@id]
+      results = SqlRunner.run(sql, values)
+      return results.map{|schedules| Schedule.new(schedules)}
+    end
+
+    def find_booking_id()
+      sql = "SELECT * FROM schedules
+      WHERE instructor_id = $1"
+      values = [@id]
+      results = SqlRunner.run(sql, values)
+      schedule = Schedule.new(results.first)
+      return schedule.id
+    end
+
+    def members
+      sql = "SELECT m.* FROM members m
+      INNER JOIN schedules s
+      ON s.member_id = m.id
+      WHERE s.instructor_id = $1"
+      values = [@id]
+      results = SqlRunner.run(sql, values)
+      return results.map { |member| Member.new(member) }
+    end
+
+    def schedules()
+      sql = "SELECT * FROM schedules
+      WHERE instructor_id = $1"
+      values = [@id]
+      results = SqlRunner.run(sql, values)
+      return results.map{|schedules| Schedule.new(schedules)}
+    end
+
     def self.find(id)
       sql = 'SELECT * FROM instructors
       WHERE id = $1'

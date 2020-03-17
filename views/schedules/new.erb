@@ -1,17 +1,22 @@
 <h1>Schedeling System</h1>
 
 <form  action="/schedules/<%= @member_id %>/create" method="post">
-  <label id ="new_schedule">
+  <label for ="new_schedule">
     Select an Instructor:
-    <select name="member_id">
+    <select name="instructor_id">
       <% for instructor in @instructors %>
         <% if !@sign_up.include? instructor.id %>
-      <option value="<%= instructor.id %>"><%= instructor.format_name %></option>
-      <% end %>
+          <option value="<%= instructor.id %>"><%= instructor.format_name %></option>
+        <% end %>
       <% end %>
     </select>
+  <div class>
+    <label for="meeting_time">Meeting Time:
+    <input type="time" name="meeting_time" id="meeting_time"/>
+  </div>
   </label>
   <br /><br />
   <br /><br />
-  <input class="button-forms" type='submit' value="Add to class">
+  <input type='submit' value="Add Instructor">
 </form>
+<label for=""></label>

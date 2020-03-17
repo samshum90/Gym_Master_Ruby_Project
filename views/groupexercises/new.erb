@@ -8,6 +8,11 @@
     </div>
 
     <div class>
+      <label for="set_date">Date:</label>
+      <input type="date" name="set_date" id="set_date"/>
+    </div>
+
+    <div class>
       <label for="start_time">Start Time:</label>
       <input type="time" name="start_time" id="start_time"/>
     </div>
@@ -21,6 +26,16 @@
       <label for="capacity">Capacity:</label>
       <input type="number" name="capacity" id="capacity"/>
     </div>
+
+<div class>
+      <label for="instructor_id">Instructor:
+        <select name="instructor_id" id="instructor_id">
+            <% for instructor in @instructor %>
+            <option value="<%= instructor.id %>"><%= instructor.format_name %></option>
+            <% end %>
+          </label>
+        </div>
+
 
 
 
