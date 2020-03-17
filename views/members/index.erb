@@ -10,11 +10,11 @@
     <th>Active Members</th>
   </tr>
   <tr>
-    <td>Name</td>
-    <td></td>
-    <td>Date Of Birth</td>
-    <td></td>
-    <td>Membership Type</td>
+    <th>Name</th>
+    <th></th>
+    <th>Date Of Birth</th>
+    <th></th>
+    <th>Membership Type</th>
   </tr>
   <% for member in @members %>
   <% if member.membership_status == "Active" %>
@@ -57,11 +57,11 @@
     <th>Deactived Members</th>
   </tr>
   <tr>
-    <td>Name</td>
-    <td></td>
-    <td>Date Of Birth</td>
-    <td></td>
-    <td>Membership Type</td>
+    <th>Name</th>
+    <th></th>
+    <th>Date Of Birth</th>
+    <th></th>
+    <th>Membership Type</th>
   </tr>
   <% for member in @members %>
   <% if member.membership_status == "Deactived" %>

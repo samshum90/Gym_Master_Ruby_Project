@@ -53,6 +53,14 @@ attr_accessor :meeting_time
     SqlRunner.run(sql, values)
   end
 
+  def meet_time()
+    sql = "SELECT * FROM schedules
+    WHERE instructor_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.map{|schedules| Schedule.new(schedules)}
+  end
+
   def self.find(id)
     sql = 'SELECT * FROM schedules
     WHERE id = $1'
