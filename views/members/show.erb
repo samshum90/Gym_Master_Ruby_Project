@@ -30,29 +30,32 @@
   </table>
 <% end %>
 
-<% if @members.instructors.count == 0 %>
-<% else %>
-  <h3>Instructors:</h3>
-    <form action="/schedules/<%= member.id %>/new" method="get">
-      <input type="submit" value="Schedule a personal trainer">
+
+  <h3>Personal Trainer:</h3>
+    <form action="/schedules/<%= @members.id %>/new" method="get">
+      <input type="submit" value="Schedule a personal trainer"></input>
     </form>
   <table>
-    <tr>
-      <th>Instructor Name</th>
-      <th>Meeting Time</th>
-    </tr>
-    <tr>
+
+    <% if @members.instructors.count == 0 %>
+    <% else %>
+
       <% @members.instructors.each do |instructor| %>
-        <td><%= instructor.format_name %></td>
+        <th><%= instructor.format_name %></th>
+        <% if instructor.schedules.count == 0 %>
+        <% else %>
         <% instructor.schedules.each do |schedule| %>
+        <tr>
           <td><%= schedule.meeting_time%></td>
           <td>
             <form action="/schedules/<%= schedule.id %>/delete" method="POST">
               <input type="submit" value="remove">
             </form>
           </td>
+            </tr>
+          <% end %>
         <% end %>
-      </tr>
+      <% end %>
+
     <% end %>
-  <% end %>
 </table>

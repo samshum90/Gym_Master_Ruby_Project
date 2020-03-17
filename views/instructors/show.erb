@@ -48,6 +48,12 @@
         <td><%= classes.start_time%></td>
         <td><%= classes.booked%></td>
         </tr>
+
+        <td>
+          <form action="/bookings/<%= classes.find_booking_id %>/delete_in_instructors" method="POST">
+            <input type="submit" value="remove">
+          </form>
+        </td>
         <% end %>
     <% end %>
 </table>

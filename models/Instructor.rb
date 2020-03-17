@@ -54,6 +54,15 @@ class Instructor
 
     def schedules()
       sql = "SELECT * FROM schedules
+      WHERE member_id = $1
+      ORDER BY meeting_time"
+      values = [@id]
+      results = SqlRunner.run(sql, values)
+      return results.map{|schedules| Schedule.new(schedules)}
+    end
+
+    def meet_times()
+      sql = "SELECT * FROM schedules
       WHERE instructor_id = $1"
       values = [@id]
       results = SqlRunner.run(sql, values)
