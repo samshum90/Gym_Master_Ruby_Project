@@ -24,5 +24,5 @@ select {
 
 input:focus {
   background-color: var(--tan);
-  color: var(--white);
+  color: var(--black);
 }

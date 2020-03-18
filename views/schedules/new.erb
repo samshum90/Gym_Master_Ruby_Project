@@ -1,15 +1,42 @@
-<h2>Schedeling System</h2>
-
-<form  action="/schedules/<%= @member_id %>/create" method="post">
-  <label for ="instructor_selection">Select an Instructor:</label>
-    <select name="instructor_id" id="instructor_selection">
-      <% for instructor in @instructors %>
-          <option value="<%= instructor.id %>"><%= instructor.format_name %></option>
-      <% end %>
-    </select>
-
-    <label for="meeting_time">Meeting Time: </label>
-    <input type="time" name="meeting_time" id="meeting_time"/>
-
-  <input type='submit' value="Add Instructor">
-</form>
+<table>
+  <tr>
+    <th>
+      <h2>Scheduling System</h2>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <form action="/schedules/<%= @member_id %>/create" method="post">
+      <label for="instructor_selection">Select an Instructor:</label>
+    </td>
+    <td>
+      <select name="instructor_id" id="instructor_selection">
+        <% for instructor in @instructors %>
+          <option value="<%=instructor.id%>"><%= instructor.format_name %></option>
+        <% end %>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="meet_date">Date:</label>
+    </td>
+    <td>
+      <input type="date" name="meet_date" id="meet_date"/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="meeting_time">Time:</label>
+    </td>
+    <td>
+      <input type="time" name="meeting_time" id="meeting_time"/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input type='submit' value="Add Instructor">
+    </td>
+    <td></td>
+  </form>
+</table>

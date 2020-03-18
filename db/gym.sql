@@ -34,6 +34,7 @@ CREATE TABLE schedules(
   id SERIAL PRIMARY KEY,
   instructor_id INT references instructors(id) ON DELETE CASCADE,
   member_id INT references members(id) ON DELETE CASCADE,
+  meet_date DATE,
   meeting_time TIME(0) NOT NULL
 );
 

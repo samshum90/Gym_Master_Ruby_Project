@@ -28,7 +28,7 @@
   <% if member.membership_status == "Active" %>
     <tr>
       <td>
-        <a href="/members/<%= member.id %>"><%= member.format_name %></a>
+        <a class= "link" href="/members/<%= member.id %>"><%= member.format_name %></a>
       </td>
       <td>|</td>
       <td><%= member.date_of_birth.strftime("%d/%m/%Y") %></td>
@@ -38,13 +38,13 @@
       <td>
       </td>
       <td>
-        <a href="/members/<%= member.id %>/edit" >
-          <input class="btn" type="submit" value="Edit">
-        </a>
-      </td>
-      <td>
         <form action="/members/<%= member.id %>/deactivate" method="POST">
           <input class="btn" type="submit" value="Deactivate">
+        </form>
+      </td>
+      <td>
+        <form action="/members/<%= member.id %>/edit" method="get">
+          <input class="btn" type="submit" value="Edit">
         </form>
       </td>
       <td>
@@ -78,7 +78,7 @@
     <th></th>
   </tr>
   <% for member in @members %>
-  <% if member.membership_status == "Deactived" %>
+  <% if member.membership_status == "Deactivated" %>
     <tr>
       <td>
         <a href="/members/<%= member.id %>"><%= member.format_name %></a>
@@ -89,15 +89,16 @@
       <td><%= member.membership_type %></td>
       <td>|</td>
 
-      <td>
-        <a href="/members/<%= member.id %>/edit" >
-          <input class="btn" type="submit" value="edit">
-        </a>
-      </td>
+
       <td>
         <form action="/members/<%= member.id %>/activate" method="POST">
           <input class="btn" type="submit" value="activate">
         </form>
+      </td>
+      <td>
+        <form action="/members/<%= member.id %>/edit_deactive" method="get">
+          <input class="btn" type="submit" value="edit">
+        </a>
       </td>
       <td>
         <form action="/members/<%= member.id %>/delete" metdod="POST">

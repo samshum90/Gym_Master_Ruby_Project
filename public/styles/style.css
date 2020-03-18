@@ -21,10 +21,35 @@ html {
    padding: 1em;
  }
 
+
+ .link {
+   padding: 6px;
+   /* border-radius: 5px; */
+   border-top: 1px inset var(--silver);
+   border-left: 1px inset var(--silver);
+   /* border: 1px inset var(--silver); */
+   cursor: pointer;
+   transition: all 0.3s;
+   color: var(--white);
+   border-radius: 2px;
+ }
+
+ .link:hover {
+   background-color: var(--tan);
+   transition: all 0.3s;
+   color: var(--white);
+   border: none;
+   border-radius: 5px;
+ }
+
 p {
   padding: 10px;
+  font-size: 1.25em;
+  margin-left: 10px;
 }
-
+i{
+  padding: 1px;
+}
 h2 {
   padding: 10px 10px 10px 0px;
   text-align: left;

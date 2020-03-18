@@ -1,27 +1,33 @@
 <table>
 
   <tr>
-    <th><h2>New Member</h2></th>
+    <th>
+      <h2>New Member</h2>
+    </th>
   </tr>
   <form action="/members" method="post">
 
     <tr>
       <td>
         <label for="first_name">First Name:</label>
-        </td><td><input type="text" name="first_name" id="first_name"/>
+      </td>
+      <td><input type="text" name="first_name" id="first_name"/>
       </td>
     </tr>
     <tr>
       <td>
         <label for="last_name">Last Name:</label>
-        </td><td><input type="text" name="last_name" id="last_name"/>
+      </td>
+      <td><input type="text" name="last_name" id="last_name"/>
       </td>
     </tr>
     <tr>
       <td>
 
         <label for="date_of_birth">Date Of Birth:</label>
-      </td><td>  <input type="date" name="date_of_birth" id="date_of_birth"/>
+      </td>
+      <td>
+        <input type="date" name="date_of_birth" id="date_of_birth"/>
 
       </td>
     </tr>
@@ -29,7 +35,9 @@
       <td>
 
         <label for="membership_select">Select Membership:</label>
-        </td><td><select name="membership_type" id="membership_select">
+      </td>
+      <td>
+        <select name="membership_type" id="membership_select">
           <option value="Peak">Peak</option>
           <option value="Off-Peak">Off-Peak</option>
         </select>
