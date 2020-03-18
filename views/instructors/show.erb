@@ -4,9 +4,10 @@
 <p>Speciality:
   <%= @instructors.speciality %></p>
 
-
+<table>
+  <th>
   <h3>Scheduled Meetings:</h3>
-  <table>
+  </th>
     <tr>
       <th>Member Name</th>
       <th>Time</th>
@@ -29,10 +30,14 @@
   <% end %>
 </table>
 
+<table>
 <% if @instructors.groupexercise.count == 0 %>
 <% else %>
+<tr>
+  <th>
   <h3>Scheduled Classes:</h3>
-  <table>
+</th>
+</tr>
     <tr>
       <th>Class Name</th>
       <th>Time</th>

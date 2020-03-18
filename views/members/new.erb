@@ -1,29 +1,47 @@
-<h1>New Member</h1>
+<table>
 
-<form action="/members" method="post">
+  <tr>
+    <th><h2>New Member</h2></th>
+  </tr>
+  <form action="/members" method="post">
 
-    <div class>
-      <label for="first_name">First Name:</label>
-      <input type="text" name="first_name" id="first_name"/>
-    </div>
+    <tr>
+      <td>
+        <label for="first_name">First Name:</label>
+        </td><td><input type="text" name="first_name" id="first_name"/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="last_name">Last Name:</label>
+        </td><td><input type="text" name="last_name" id="last_name"/>
+      </td>
+    </tr>
+    <tr>
+      <td>
 
-    <div class>
-      <label for="last_name">Last Name:</label>
-      <input type="text" name="last_name" id="last_name"/>
-    </div>
+        <label for="date_of_birth">Date Of Birth:</label>
+      </td><td>  <input type="date" name="date_of_birth" id="date_of_birth"/>
 
-    <div class>
-      <label for="date_of_birth">Date Of Birth:</label>
-      <input type="date" name="date_of_birth" id="date_of_birth"/>
-    </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
 
-    <div class>
-      <label for="membership_select">Select Membership:</label>
-      <select name="membership_type" id="membership_select">
-            <option value="Peak">Peak</option>
-            <option value="Off-Peak">Off-Peak</option>
-      </select>
-    </div>
+        <label for="membership_select">Select Membership:</label>
+        </td><td><select name="membership_type" id="membership_select">
+          <option value="Peak">Peak</option>
+          <option value="Off-Peak">Off-Peak</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
 
-  <input class type='submit' value="Create">
-</form>
+        <input class="class" type='submit' value="Create">
+      </td>
+      <td></td>
+    </tr>
+
+  </form>
+</table>

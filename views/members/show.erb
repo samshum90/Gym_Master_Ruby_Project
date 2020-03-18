@@ -1,4 +1,4 @@
-<h1>Member Details:</h1>
+<h2>Member Details:</h2>
   <p>Member Name: <%= @members.format_name %></p>
 
 <p>Date of Birth:
@@ -8,8 +8,13 @@
 
 <% if @members.groupexercise.count == 0 %>
 <% else %>
-  <h3>Classes:</h3>
   <table>
+    <tr>
+
+    <th>
+  <h3>Registered Classes:</h3>
+  </th>
+</tr>
     <tr>
       <th>Class Name</th>
       <th>|</th>
@@ -33,18 +38,28 @@
   </table>
 <% end %>
 
+<table>
+  <tr>
 
-  <h3>Personal Trainer Schedule:</h3>
-    <form action="/schedules/<%= @members.id %>/new" method="get">
+  <th><h3>Personal Trainer Schedule:</h3></th>
+
+</tr>
+  <tr>
+    <td><form action="/schedules/<%= @members.id %>/new" method="get">
       <input type="submit" value="Schedule a personal trainer"></input>
-    </form>
-  <table>
+    </form></td>
+
+    </tr>
+
 
     <% if @members.instructors.count == 0 %>
     <% else %>
 
       <% @members.instructors.each do |instructor| %>
+      <tr>
+
         <th><%= instructor.format_name %></th>
+      </tr>
         <% if instructor.schedules.count == 0 %>
         <% else %>
         <% instructor.schedules.each do |schedule| %>

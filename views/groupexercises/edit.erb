@@ -1,49 +1,58 @@
+<table>
+<tr>
+
+<th>
 <h2>Edit
   <%= @groups.name %>
   Class
 </h2>
-
+</th>
+</tr>
 <form action="/groupexercises/<%= @groups.id %>" method="post">
-<table>
+
 <tr>
 
 
     <td><label for="name">Name:</label></td>
     <td><input type="text" name="name" id="name" value="<%= @groups.name %>"/></td>
 </tr>
-  <div class="class">
-    <label for="instructor_id">Instructor:</label>
-      <select name="instructor_id" id="instructor_id">
+<tr>
+
+
+    <td>
+    <label for="instructor_id">Instructor:</label></td>
+      <td><select name="instructor_id" id="instructor_id">
         <% for instructor in @instructors %>
           <option value="<%= instructor.id %>"><%= instructor.format_name %></option>
         <% end %>
       </select>
-    </div>
+    </td>
+<tr>
+  <td>
 
-    <div class="class">
-      <label for="set_date">Date:</label>
-      <input type="date" name="set_date" id="set_date" value="<%= @groups.set_date %>"/>
-    </div>
+      <label for="set_date">Date:</label></td>
+      <td><input type="date" name="set_date" id="set_date" value="<%= @groups.set_date %>"/>
+        </td>
+    </tr>
 
-    <div class="class">
-      <label for="start_time">Start Time:</label>
-      <input type="time" name="start_time" id="start_time" value="<%= @groups.start_time %>"/>
-    </div>
-
-    <div class="class">
-      <label for="price">Price: £</label>
-      <input type="number" name="price" id="price" value="<%= @groups.price %>"/>
-    </div>
+    <tr>
+      <td>
+      <label for="start_time">Start Time:</label></td>
+      <td><input type="time" name="start_time" id="start_time" value="<%= @groups.start_time %>"/></td>
+      </tr>
 <tr>
 
+<td>
+      <label for="price">Price: £</label></td>
+      <td><input type="number" name="price" id="price" value="<%= @groups.price %>"/></td>
+      </tr>
+<tr>
 
-    <div class="class">
     <td>  <label for="capacity">Capacity:</label> </td>
       <td><input type="number" name="capacity" id="capacity" value="<%= @groups.capacity %>"/></td>
-    </div>
     </tr>
 <tr>
     <td><input class="class" type='submit' value="submit"></td>
+    <td></form></td>
     </tr>
     </table>
-  </form>
