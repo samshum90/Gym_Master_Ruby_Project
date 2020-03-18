@@ -1,5 +1,5 @@
-<h1>Member name:
-  <%= @members.format_name %></h1>
+<h1>Member Details:</h1>
+  <p>Member Name: <%= @members.format_name %></p>
 
 <p>Date of Birth:
   <%= @members.date_of_birth.strftime("%d/%m/%Y") %></p>
@@ -12,13 +12,16 @@
   <table>
     <tr>
       <th>Class Name</th>
+      <th>|</th>
       <th>Time</th>
     </tr>
     <tr>
       <% @members.groupexercise.each do |classes| %>
         <tr>
           <td><%= classes.name %></td>
+          <td>|</td>
           <td><%= classes.start_time %></td>
+          <td>|</td>
           <td>
             <form action="/bookings/<%= classes.find_booking_id %>/delete_in_members" method="POST">
               <input type="submit" value="remove">

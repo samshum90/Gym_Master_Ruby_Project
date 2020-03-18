@@ -3,28 +3,37 @@
   <head>
     <meta charset="utf-8">
     <title>Gym Manager</title>
+      <link rel="stylesheet" type="text/css" href="/styles/style.css">
+      <link rel="stylesheet" type="text/css" href="/styles/forms.css">
+      <link rel="stylesheet" type="text/css" href="/styles/buttons.css">
+      <link rel="stylesheet" type="text/css" href="/styles/tables.css">
+      <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <script src="https://kit.fontawesome.com/8c778ac2fd.js" crossorigin="anonymous"></script>
   </head>
+
   <body>
-    <main class=>
-  <nav>
-    <ul>
-      <li>
-        <a href="/">Dashboard</a>
-      </li>
-      <li>
-        <a href="/members">Members</a>
-      </li>
-      <li>
-        <a href="/groupexercises">Classes</a>
-      </li>
-      <li>
-        <a href="/instructors">Instructors</a>
-      </li>
-    </ul>
-  </nav>
-  <section id="content">
-  <%= yield %>
-  </section>
-  </main>
+    <div class = "header-container">
+      <h1>GYM MASTER</h1>
+      <nav nav id="menu">
+        <ul>
+          <li>
+            <a href="/">Dashboard</a>
+          </li>
+          <li>
+            <a href="/members">Members</a>
+          </li>
+          <li>
+            <a href="/groupexercises">Classes</a>
+          </li>
+          <li>
+            <a href="/instructors">Instructors</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <main class="main">
+    <%= yield %>
+
   </body>
 </html>
