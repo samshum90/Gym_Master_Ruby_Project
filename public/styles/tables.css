@@ -1,17 +1,16 @@
 
 td, th {
   text-align: left;
+  padding: 10px 10px 10px 10px;
+  word-wrap: break-word;
 }
 
-td {
-  border: black 2px;
-  padding: 0px 20px 10px 0px;
+th{
 }
 
-th {
-  padding: 0px 20px 10px 0px;
-}
 
 table {
   border-collapse: collapse;
+  border: 1px outset var(--silver);
+  margin: 10px;
 }

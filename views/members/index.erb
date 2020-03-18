@@ -1,4 +1,4 @@
-<h1>Members</h1>
+<h2>Members</h2>
 <a href="/members/new">
   <input class="btn" type="submit" value="create">
 </a>
@@ -7,7 +7,14 @@
 
 <table>
   <tr>
-    <th>Active Members</th>
+    <th>
+      <h3>Active Members</h3>
+    </th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
   <tr>
     <th>Name</th>
@@ -15,6 +22,7 @@
     <th>Date Of Birth</th>
     <th></th>
     <th>Membership Type</th>
+    <th></th>
   </tr>
   <% for member in @members %>
   <% if member.membership_status == "Active" %>
@@ -54,7 +62,12 @@
 <br>
 <table>
   <tr>
-    <th>Deactived Members</th>
+    <th><h3>Deactived Members</h3></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
   <tr>
     <th>Name</th>
@@ -62,6 +75,7 @@
     <th>Date Of Birth</th>
     <th></th>
     <th>Membership Type</th>
+    <th></th>
   </tr>
   <% for member in @members %>
   <% if member.membership_status == "Deactived" %>
@@ -73,6 +87,7 @@
       <td><%= member.date_of_birth %></td>
       <td>|</td>
       <td><%= member.membership_type %></td>
+      <td>|</td>
 
       <td>
         <a href="/members/<%= member.id %>/edit" >
@@ -89,6 +104,7 @@
           <input class="btn" type="submit" value="delete">
         </form>
       </td>
+      <td></td>
     </tr>
   <% end %>
   <% end %>

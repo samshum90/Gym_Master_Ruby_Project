@@ -35,7 +35,6 @@ get '/groupexercises/:id/edit' do
   @instructors = Instructor.all
   erb( :"groupexercises/edit" )
 end
-# change instructor
 
 # create
 post '/groupexercises' do

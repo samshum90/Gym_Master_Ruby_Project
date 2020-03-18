@@ -5,7 +5,13 @@ input[type=submit] {
   cursor:pointer;
   background-color: var(--grey);
   text-transform: uppercase;
+  color: var(--white);
 }
 input[type=submit]:hover {
   background-color: var(--tan);
+  color: var(--white);
+}
+
+a input[type=submit]{
+margin: 5px 0px 5px 10px;
 }
