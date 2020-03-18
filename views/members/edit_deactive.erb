@@ -4,7 +4,7 @@
       <h2>Edit <%= @members.format_name %></h2>
     </th>
   </tr>
-  <form method="POST" action="/members/<%= @members.id %>">
+  <form method="POST" action="/members/<%= @members.id %>/edit_deactive">
 
     <tr>
       <td>
@@ -40,7 +40,6 @@
     </tr>
     <tr>
       <td>
-
         <label for="membership_select">Select Membership:</label>
       </td>
       <td>
@@ -54,7 +53,19 @@
     </tr>
     <tr>
       <td>
-
+        <label for="membership_status_select">Membership Status:</label>
+      </td>
+      <td>
+        <select name="membership_status"
+        id="membership_status_select"
+        value="<%= @members.membership_status %>">
+          <option value="Active">Active</option>
+          <option value="Deactivated">Deactivated</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
         <input type='submit' value="Edit">
       </td>
       <td></td>

@@ -1,6 +1,6 @@
-<h1>Instructor Profile:</h1>
+<h2>Instructor Profile:</h2>
 <p>Name:
-  <%= @instructors.format_name %></p>
+  <a href="/instructors"/<%= @instructors.id %>></a><%= @instructors.format_name %></a></p>
 <p>Speciality:
   <%= @instructors.speciality %></p>
 
@@ -10,14 +10,19 @@
   </th>
     <tr>
       <th>Member Name</th>
+      <th></th>
       <th>Time</th>
+      <th></th>
     </tr>
     <% if @instructors.members.count == 0 %>
     <% else %>
-    <% @instructors.members.each do |member| %>
+    <% b = @instructors.members.uniq %>
+    <% b.each do |member| %>
     <tr>
-        <td><%= member.format_name %></td>
-        <% member.schedules.each do |schedule| %>
+        <td><a class= "link" href="/members/<%= member.id %>"><%= member.format_name %></a></td>
+        <td>|</td>
+        <% a = member.schedules.uniq%>
+        <% a.each do |schedule| %>
           <td><%= schedule.meeting_time%></td>
           <td>
             <form action="/schedules/<%= schedule.id %>/delete" method="POST">
@@ -40,15 +45,24 @@
 </tr>
     <tr>
       <th>Class Name</th>
+      <th></th>
+      <th>Date</th>
+      <th></th>
       <th>Time</th>
+      <th></th>
       <th>No. Booked</th>
+      <th></th>
     </tr>
 
     <% @instructors.groupexercise.each do |classes| %>
     <tr>
-      <td><%= classes.name %></td>
-      <td><%= classes.start_time%></td>
-      <td><%= classes.booked%></td>
+      <td><a class= "link" href="/groupexercises/<%= classes.id %>"><%= classes.name %></a></td>
+      <td>|</td>
+      <td><%= classes.set_date %></td>
+      <td>|</td>
+      <td><%= classes.start_time %></td>
+      <td>|</td>
+      <td><%= classes.booked %></td>
 
       <td>
         <form action="/groupexercises/<%= classes.id %>/edit" method="get">

@@ -1,4 +1,7 @@
 <h2>Classes</h2>
+<a href="/groupexercises/new">
+  <input type="submit" value="create">
+</a>
 <table>
   <tr>
     <% current_date = Date.today.strftime("%d/%m/%Y") %>
@@ -34,9 +37,9 @@
   <% for group in @group %>
   <% if group.set_date.strftime("%d/%m/%Y") == current_date  %>
   <tr>
-    <td><a href="/groupexercises/<%= group.id %>"><%= group.name %></a></td>
+    <td><a class= "link" href="/groupexercises/<%= group.id %>"><%= group.name %></a></td>
     <td>|</td>
-    <td><a href="/instructors/<%= group.instructor_id %>"><%=group.instructor_name%></a></td>
+    <td><a class= "link" href="/instructors/<%= group.instructor_id %>"><%=group.instructor_name%></a></td>
     <td>|</td>
     <td><%= group.start_time %></td>
     <td>|</td>

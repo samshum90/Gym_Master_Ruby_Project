@@ -1,32 +1,43 @@
-<h2>Edit <%= @instructors.format_name %></h2>
+<table>
+  <tr>
+    <th>
+      <h2>Edit  <%= @instructors.format_name %></h2>
+    </th>
+  </tr>
+  <form method="POST" action="/instructors/<%= @instructors.id %>">
 
-<form method="POST" action="/instructors/<%= @instructors.id %>">
+    <tr>
+      <td>
+        <label for="first_name">First Name:</label>
+      </td>
+      <td>
+        <input type="text" name="first_name" id="first_name" value="<%= @instructors.first_name %>"/>
+      </td>
+    </tr>
 
-    <div class>
-      <label for="first_name">First Name:</label>
-      <input type="text"
-        name="first_name"
-        id="first_name"
-        value="<%= @instructors.first_name %>"/>
-    </div>
+    <tr>
+      <td>
+        <label for="last_name">Last Name:</label>
+      </td>
+      <td>
+        <input type="text" name="last_name" id="last_name" value="<%= @instructors.last_name %>"/>
+      </td>
+    </tr>
 
-    <div class>
-      <label for="last_name">Last Name:</label>
-      <input type="text"
-        name="last_name"
-        id="last_name"
-        value="<%= @instructors.last_name %>"/>
-    </div>
+    <tr>
+      <td>
+        <label for="speciality">Speciality:</label>
+      </td>
+      <td>
+        <input type="text" name="speciality" id="speciality" value="<%= @instructors.speciality %>"/>
+      </td>
+    </tr>
 
-    <div class>
-      <label for="speciality">Speciality:</label>
-      <input type="text"
-        name="speciality"
-        id="speciality"
-        value="<%= @instructors.speciality %>"/>
-    </div>
-
-
-
-  <input class type='submit' value="edit">
+<tr>
+  <td>
+    <input type='submit' value="edit">
+  </td>
+  <td></td>
+</tr>
 </form>
+</table>

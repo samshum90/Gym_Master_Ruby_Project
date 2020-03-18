@@ -11,7 +11,7 @@ end
 
 get '/groupexercises/new' do
   @group = GroupExercise.all
-  @instructor = Instructor.all
+  @instructors = Instructor.all
   erb(:"groupexercises/new")
 end
 

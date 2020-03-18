@@ -2,6 +2,7 @@ require( 'sinatra' )
 require( 'sinatra/contrib/all' )
 require('pry')
 require_relative( '../models/member.rb' )
+require_relative( '../models/schedule.rb' )
 also_reload( '../models/*' )
 
 get '/members' do
@@ -15,13 +16,19 @@ get '/members/new' do
 end
 
 get '/members/:id' do
-  @members = Member.find(params['id'].to_i)
+  member = Member.find(params['id'].to_i)
+  @schedule = member.schedules
+  @members = member
   erb( :"members/show" )
 end
 
 get '/members/:id/edit' do
   @members = Member.find( params[:id] )
   erb( :"members/edit" )
+end
+get '/members/:id/edit_deactive' do
+  @members = Member.find( params[:id] )
+  erb( :"members/edit_deactive" )
 end
 
 post '/members' do
@@ -39,7 +46,7 @@ end
 
 post '/members/:id/deactivate' do
   members = Member.find(params['id'].to_i)
-  members.membership_status = "Deactived"
+  members.membership_status = "Deactivated"
   members.update
   redirect to("/members")
 end
@@ -51,8 +58,15 @@ post '/members/:id/activate' do
   redirect to("/members")
 end
 
+post '/members/:id/edit_deactive' do
+  @members = Member.new(params)
+  @members.update
+  redirect to("/members")
+end
+
 post '/members/:id' do
   @members = Member.new(params)
+  @members.membership_status = "Active"
   @members.update
   redirect to("/members")
 end

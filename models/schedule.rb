@@ -1,14 +1,17 @@
 require_relative('../db/sql_runner')
+require('date')
 
 class Schedule
 
-attr_reader :id, :instructor_id, :member_id
-attr_accessor :meeting_time
+attr_reader :id
+attr_accessor :meeting_time, :meet_date, :instructor_id, :member_id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @instructor_id = options['instructor_id'].to_i
     @member_id = options['member_id'].to_i
+    set_date_as_array = options['meet_date'].split("-")
+    @meet_date = Date.new(set_date_as_array[0].to_i,set_date_as_array[1].to_i,set_date_as_array[2].to_i)
     @meeting_time = options['meeting_time']
   end
 
@@ -16,11 +19,12 @@ attr_accessor :meeting_time
     sql = 'INSERT INTO schedules (
           instructor_id,
           member_id,
+          meet_date,
           meeting_time )
           VALUES
-          ( $1, $2, $3  )
+          ( $1, $2, $3, $4  )
           RETURNING id'
-    values = [@instructor_id, @member_id, @meeting_time]
+    values = [@instructor_id, @member_id, @meet_date, @meeting_time]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
@@ -30,11 +34,12 @@ attr_accessor :meeting_time
     SET (
       instructor_id,
       member_id,
+      meet_date,
       meeting_time )
     =
-    ( $1, $2, $3 )
-    WHERE id = $4'
-    values = [@instructor_id, @member_id, @meeting_time, @id]
+    ( $1, $2, $3, $4 )
+    WHERE id = $5'
+    values = [@instructor_id, @member_id, @meet_date, @meeting_time, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -59,6 +64,14 @@ attr_accessor :meeting_time
     values = [@id]
     results = SqlRunner.run(sql, values)
     return results.map{|schedules| Schedule.new(schedules)}
+  end
+
+  def instructors()
+    sql = "SELECT * FROM instructors
+    WHERE id = $1"
+    values = [@instructor_id]
+    results = SqlRunner.run(sql, values)
+    return results.map{|instructor| Instructor.new(instructor)}
   end
 
   def self.find(id)

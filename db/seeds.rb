@@ -11,6 +11,7 @@ GroupExercise.delete_all()
 Member.delete_all()
 Booking.delete_all()
 Instructor.delete_all()
+Schedule.delete_all()
 
 d = Date.today.to_s
 d1 = Date.today + 1
@@ -118,7 +119,7 @@ member7 = Member.new({
   'last_name' => 'High',
   'date_of_birth' => '2001-04-11',
   'membership_type' => 'Off-Peak',
-  'membership_status' => 'Deactived'})
+  'membership_status' => 'Deactivated'})
 member7.save
 
 member8 = Member.new({
@@ -220,6 +221,7 @@ booking11.save
 schedule1 = Schedule.new({
   'instructor_id' => instructor1.id,
   'member_id' => member1.id,
+  'meet_date' => d1.to_s,
   'meeting_time' => '13:00:00'
   })
 schedule1.save
@@ -227,6 +229,7 @@ schedule1.save
 schedule2 = Schedule.new({
   'instructor_id' => instructor2.id,
   'member_id' => member2.id,
+  'meet_date' => d,
   'meeting_time' => '13:00:00'
   })
 schedule2.save

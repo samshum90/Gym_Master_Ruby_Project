@@ -1,0 +1,55 @@
+<table>
+  <tr>
+    <th>
+      <h2>Schedeling System</h2>
+    </th>
+  </tr>
+
+    <td>
+      <form action="/schedules/<%= @schedule.id %>/edit" method="post">
+      <label for="member_selection">Member Selected:</label>
+    </td>
+    <td>
+      <select name="member_id" id="member_selection">
+
+          <option value=" <%= @schedule.member_id %>"><%= @schedule.members.format_name %></option>
+        <% for member in @member %>
+          <option value=" <%= member.id %>"><%= member.format_name %></option>
+        <% end %>
+      </select>
+    </td>
+    <tr>
+      <td>
+      <label for="instructor_selection">Select an Instructor:</label>
+    </td>
+    <td>
+      <select name="instructor_id" id="instructor_selection">
+        <% for instructor in @instructors %>
+          <option value=" <%= instructor.id %>"><%= instructor.format_name %></option>
+        <% end %>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="meet_date">Date:</label>
+    </td>
+    <td>
+      <input value="<%= @schedule.meet_date %>" type="date" name="meet_date" id="meet_date"/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="meeting_time">Time:</label>
+    </td>
+    <td>
+      <input value="<%= @schedule.meeting_time %>" type="time" name="meeting_time" id="meeting_time"/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input type='submit' value="Edit">
+    </td>
+    <td></td>
+  </form>
+</table>

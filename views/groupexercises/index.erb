@@ -23,9 +23,9 @@
   </tr>
   <% for group in @group %>
   <tr>
-    <td><a href="/groupexercises/<%= group.id %>"><%= group.name %></a></td>
+    <td><a class= "link" href="/groupexercises/<%= group.id %>"><%= group.name %></a></td>
     <td>|</td>
-    <td><a href="/instructors/<%= group.instructor_id %>"><%=group.instructor_name%></a></td>
+    <td><a class= "link" href="/instructors/<%= group.instructor_id %>"><%=group.instructor_name%></a></td>
     <td>|</td>
     <td><%= group.set_date.strftime("%d/%m/%Y") %></td>
     <td>|</td>

@@ -14,7 +14,7 @@
   <% for instructor in @instructors.uniq %>
     <tr>
       <td>
-        <a href="/instructors/<%= instructor.id %>"><%= instructor.format_name %></a>
+        <a class= "link" href="/instructors/<%= instructor.id %>"><%= instructor.format_name %></a>
       </td>
       <td>|</td>
       <td><%= instructor.speciality %></td>
