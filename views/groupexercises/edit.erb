@@ -1,15 +1,16 @@
-<h1>Edit
+<h2>Edit
   <%= @groups.name %>
   Class
-</h1>
+</h2>
 
 <form action="/groupexercises/<%= @groups.id %>" method="post">
+<table>
+<tr>
 
-  <div class="class">
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name" value="<%= @groups.name %>"/>
-  </div>
 
+    <td><label for="name">Name:</label></td>
+    <td><input type="text" name="name" id="name" value="<%= @groups.name %>"/></td>
+</tr>
   <div class="class">
     <label for="instructor_id">Instructor:</label>
       <select name="instructor_id" id="instructor_id">
@@ -33,11 +34,16 @@
       <label for="price">Price: £</label>
       <input type="number" name="price" id="price" value="<%= @groups.price %>"/>
     </div>
+<tr>
+
 
     <div class="class">
-      <label for="capacity">Capacity:</label>
-      <input type="number" name="capacity" id="capacity" value="<%= @groups.capacity %>"/>
+    <td>  <label for="capacity">Capacity:</label> </td>
+      <td><input type="number" name="capacity" id="capacity" value="<%= @groups.capacity %>"/></td>
     </div>
-
-    <input class="class" type='submit' value="submit">
+    </tr>
+<tr>
+    <td><input class="class" type='submit' value="submit"></td>
+    </tr>
+    </table>
   </form>

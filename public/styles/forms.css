@@ -1,0 +1,28 @@
+input[type=text]{
+  color: var(--black)
+}
+input[type=date]{
+  color: var(--black)
+}
+input[type=time]{
+  color: var(--black)
+}
+input[type=number]{
+  color: var(--black)
+}
+.class{
+  margin: 5px 0;
+}
+select {
+  width: 150px;
+  padding: 5px 35px 5px 5px;
+  margin: 5px 0;
+  font-size: 0.8em;
+  border: 1px solid #eee;
+  color: var(--black)
+}
+
+input:focus {
+  background-color: var(--tan);
+  color: var(--white);
+}
