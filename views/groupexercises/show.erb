@@ -23,7 +23,7 @@
 <th>Registered Members:</th>
   <% @group.members.each do |member| %>
   <tr>
-    <td><a class= "link" href="/groupexercises/<%= member.id %>"><%= member.format_name %></a></td>
+    <td><a class= "link" href="/members/<%= member.id %>"><%= member.format_name %></a></td>
     <td></td>
     <td>
       <form action="/bookings/<%= member.find_booking_id %>/delete" method="POST">

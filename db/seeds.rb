@@ -32,7 +32,7 @@ instructor2.save
 
 group1 = GroupExercise.new({
   'name' => 'Pilates',
-  'set_date' => d,
+  'set_date' => d1.to_s,
   'start_time' => '13:00:00',
   'price' => 5.00,
   'capacity' => 10,
@@ -60,7 +60,7 @@ group3.save
 group4 = GroupExercise.new({
   'name' => "Yoga",
   'set_date' => d1.to_s,
-  'start_time' => '17:00:00',
+  'start_time' => '10:00:00',
   'price' => 1.00,
   'capacity' => 4,
   'instructor_id' => instructor1.id})
