@@ -1,4 +1,20 @@
 <h2>Member Details:</h2>
+
+<% if @members.profiles.count == 0 %>
+<% else %>
+  <img class="profile" src="/profile_pics/<%= @members.profile_url.photo_url %>" />
+<% end %>
+
+<div class = "image-butt-container">
+  <form action="/profiles/<%= @members.id %>/new" method = "get">
+      <input type="submit" value="Upload image">
+  </form>
+
+  <form action="/profiles/<%= @members.id %>/edit" method = "get">
+      <input type="submit" value="update image">
+  </form>
+</div>
+
 <p>Member Name:
   <%= @members.format_name %></p>
 

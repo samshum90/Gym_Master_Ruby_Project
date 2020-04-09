@@ -1,0 +1,6 @@
+<h2>Upload Image</h2>
+
+  <form action="/profiles/<%= @members.id %>/save_image" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="Upload image">
+  </form>

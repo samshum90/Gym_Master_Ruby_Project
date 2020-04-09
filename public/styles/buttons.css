@@ -15,3 +15,26 @@ input[type=submit]:hover {
 a input[type=submit]{
 margin: 5px 10px;
 }
+input[type=file] {
+  border:0px none;
+  border-radius: 6px;
+  padding: 2px 6px;
+  cursor:pointer;
+  background-color: var(--grey);
+  text-transform: uppercase;
+  color: var(--white);
+}
+input[type=file]:hover {
+  background-color: var(--tan);
+  color: var(--white);
+}
+
+.image-butt-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.image-butt-container input{
+  margin-left: 10px;
+}
+

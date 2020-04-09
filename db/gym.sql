@@ -30,6 +30,12 @@ CREATE TABLE members(
   membership_status VARCHAR(255)
 );
 
+CREATE TABLE profiles(
+  id SERIAL PRIMARY KEY,
+  member_id INT references members(id) ON DELETE CASCADE,
+  photo_url VARCHAR(255)
+);
+
 CREATE TABLE schedules(
   id SERIAL PRIMARY KEY,
   instructor_id INT references instructors(id) ON DELETE CASCADE,
