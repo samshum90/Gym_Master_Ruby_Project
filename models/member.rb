@@ -67,6 +67,22 @@ class Member
     return results.map{|booking| Booking.new(booking)}
   end
 
+  def profiles()
+    sql = "SELECT * FROM profiles
+    WHERE member_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.map{|profile| Profile.new(profile)}
+  end
+
+  def profile_url()
+    sql = "SELECT photo_url FROM profiles
+    WHERE member_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return Profile.new(results.first)
+  end
+
   def schedules()
     sql = "SELECT * FROM schedules
     WHERE member_id = $1"

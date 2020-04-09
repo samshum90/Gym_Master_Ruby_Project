@@ -2,6 +2,7 @@ require_relative('../models/groupexercise')
 require_relative('../models/member')
 require_relative('../models/booking')
 require_relative('../models/instructor')
+require_relative('../models/profile')
 require_relative('../models/schedule')
 
 
@@ -145,6 +146,17 @@ member10 = Member.new({
   'membership_type' => 'Peak',
   'membership_status' => 'Active'})
 member10.save
+
+profile1 = Profile.new({
+  'member_id' => member1.id,
+  'photo_url' => 'Robin Gribbles.jpg'
+  })
+profile1.save
+profile2 = Profile.new({
+  'member_id' => member2.id,
+  'photo_url' => 'Sunny Suen.jpg'
+  })
+profile2.save
 
 booking1 = Booking.new({
   'member_id' => member1.id,

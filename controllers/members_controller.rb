@@ -26,6 +26,7 @@ get '/members/:id/edit' do
   @members = Member.find( params[:id] )
   erb( :"members/edit" )
 end
+
 get '/members/:id/edit_deactive' do
   @members = Member.find( params[:id] )
   erb( :"members/edit_deactive" )

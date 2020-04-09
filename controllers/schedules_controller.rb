@@ -11,7 +11,6 @@ also_reload( '../models/*' )
 get '/schedules/:id/new_in_member' do
   @instructors = Instructor.all
   @member_id = params[:id]
-  member = Member.find(params[:id])
     erb(:"/schedules/new")
 end
 

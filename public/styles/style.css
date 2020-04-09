@@ -21,6 +21,12 @@ html {
    padding: 1em;
  }
 
+.profile{
+  width: 20rem;
+  height: 28rem;
+  object-fit: cover;
+  padding: 10px;
+}
 
  .link {
    padding: 6px;
