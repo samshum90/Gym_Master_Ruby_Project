@@ -1,6 +1,5 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
-require( 'pry-byebug' )
 require_relative( '../models/profile' )
 require_relative( '../models/member' )
 

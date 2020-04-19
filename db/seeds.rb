@@ -6,8 +6,6 @@ require_relative('../models/profile')
 require_relative('../models/schedule')
 
 
-require("pry-byebug")
-
 GroupExercise.delete_all()
 Member.delete_all()
 Booking.delete_all()
