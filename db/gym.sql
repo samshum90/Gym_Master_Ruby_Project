@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS schedules;
+DROP TABLE IF EXISTS profiles;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS groupexercises;
 DROP TABLE IF EXISTS instructors;
