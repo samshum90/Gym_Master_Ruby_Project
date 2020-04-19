@@ -244,6 +244,3 @@ schedule2 = Schedule.new({
   })
 schedule2.save
 
-
-binding.pry
-nil
