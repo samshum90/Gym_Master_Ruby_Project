@@ -8,7 +8,7 @@ Following MVC design with Restful routes.
 
 The project is designed to be used in a gym to manage members, classes, and Instructors.
 
-![alt text](https://github.com/samshum90/Solo_Ruby_Project_Gym/raw/master/public/readme/Gym_App.gif "Gym App Gif")
+![alt text](https://github.com/samshum90/Gym_Master_Ruby_Project/raw/master/public/readme/Gym_App.gif "Gym App Gif")
 
 ### Features:
 * Create, read, update, and delete: members, Classes and Instructors
