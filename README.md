@@ -3,7 +3,8 @@
 [Live App on Heroku](https://gym-master-3000.herokuapp.com)
 
 This is my first Full stack app built with Ruby using Sinatra for the frontend and PostgresSQL as backend.
-My First Solo week long project built during CodeClan's professional software development course., Sinatra, and PostgreSQL were used to build a CRUD app with Restful routes.
+My First Solo week long project built during CodeClan's professional software development course.
+Following MVC design with Restful routes.
 
 The project is designed to be used in a gym to manage members, classes, and Instructors.
 
