@@ -7,15 +7,15 @@ My First Solo week long project built during CodeClan's professional software de
 
 The project is designed to be used in a gym to manage members, classes, and Instructors.
 
-![alt text](https://github.com/samshum90/Solo_Ruby_Project_Gym/raw/master/public/readme/Gym_App.gif "Gym App Gif"
+![alt text](https://github.com/samshum90/Solo_Ruby_Project_Gym/raw/master/public/readme/Gym_App.gif "Gym App Gif")
 
-##Features:
-*Create, read, update, and delete: members, Classes and Instructors
-*Class booking creation is limited by class capacity, active membership, membership type and cannot be rebooked 
-*Pictures can be uploaded to the member profiles
-*Classes can be filtered to view the classes scheduled for today
+### Features:
+* Create, read, update, and delete: members, Classes and Instructors
+* Class booking creation is limited by class capacity, active membership, membership type and cannot be rebooked 
+* Pictures can be uploaded to the member profiles
+* Classes can be filtered to view the classes scheduled for today
 
-##Project setup
+### Project setup
 
 Install required modules, create and seed database.
 
